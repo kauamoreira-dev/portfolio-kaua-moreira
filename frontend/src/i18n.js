@@ -58,21 +58,23 @@ export const dict = {
         "vagas-tapajos": {
           subtitulo: "Plataforma Regional de Empregos",
           descricao:
-            "Plataforma regional de empregos conectando candidatos e empresas, com autenticação, vagas, candidaturas, favoritos, notificações, chat e aplicativo Android.",
-          status: "Web & Android",
+            "Plataforma regional de empregos criada para conectar candidatos e empresas da região do Tapajós.",
+          status: "Projeto ativo",
           dev: false,
           funcionalidades: [
             "Autenticação de candidatos e empresas",
-            "Publicação e busca de vagas",
-            "Candidaturas e favoritos",
-            "Notificações e chat integrado",
-            "Aplicativo Android via Capacitor",
+            "Publicação e gerenciamento de vagas",
+            "Candidaturas",
+            "Favoritos",
+            "Notificações",
+            "Chat",
+            "Aplicativo Android",
           ],
         },
         "tapajos-combat": {
           subtitulo: "Competições & Eventos de Combate",
           descricao:
-            "Plataforma digital voltada para competições e eventos de esportes de combate, com foco na organização de eventos, atletas, categorias, lutas e brackets.",
+            "Plataforma digital para organização de competições e eventos de esportes de combate, com foco em atletas, categorias, lutas e brackets.",
           status: "Em desenvolvimento",
           dev: true,
           funcionalidades: [
@@ -185,21 +187,23 @@ export const dict = {
         "vagas-tapajos": {
           subtitulo: "Regional Job Platform",
           descricao:
-            "Regional job platform connecting candidates and companies, with authentication, job postings, applications, favorites, notifications, chat and an Android app.",
-          status: "Web & Android",
+            "Regional job platform created to connect candidates and companies from the Tapajós region.",
+          status: "Active project",
           dev: false,
           funcionalidades: [
             "Authentication for candidates and companies",
-            "Job posting and search",
-            "Applications and favorites",
-            "Notifications and built-in chat",
-            "Android app via Capacitor",
+            "Job posting and management",
+            "Applications",
+            "Favorites",
+            "Notifications",
+            "Chat",
+            "Android app",
           ],
         },
         "tapajos-combat": {
           subtitulo: "Combat Sports Competitions & Events",
           descricao:
-            "Digital platform focused on combat sports competitions and events, centered on organizing events, athletes, categories, fights and brackets.",
+            "Digital platform for organizing combat sports competitions and events, focused on athletes, categories, fights and brackets.",
           status: "In development",
           dev: true,
           funcionalidades: [

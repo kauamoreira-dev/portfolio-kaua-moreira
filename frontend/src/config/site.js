@@ -60,7 +60,7 @@ export const projetos = [
       "Lutas e brackets",
     ],
     // Preencha as tecnologias quando confirmadas. Ex.: ["React", "TypeScript"]
-    tech: [],
+    tech: ["React", "TypeScript", "Vite", "Supabase"],
     imagens: {
       mockup: "/images/combat-mockup.jpeg",
       logo: "/images/combat-logo.jpeg",

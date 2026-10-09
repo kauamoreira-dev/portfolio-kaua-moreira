@@ -47,3 +47,4 @@ Criar um portfólio pessoal premium, moderno e altamente profissional para o des
 ## Iterações
 - 2026-10-09 (b): Projetos redesenhados para 2 projetos em layout editorial alternado; Vagas Tapajós com screenshots reais (web + app) e url https://vagastapajos.com.br; Tapajós Combat com mockup + logo reais e status "Em desenvolvimento"
 - 2026-10-09 (c): alternância PT/EN completa (contexto React, persistência em localStorage, html lang e document.title dinâmicos)
+- 2026-10-09 (d): textos finais dos projetos — Vagas "Projeto ativo" + descrição curta + 7 funcionalidades; Combat com novas descrição e tecnologias (React, TypeScript, Vite, Supabase); sem novas seções
