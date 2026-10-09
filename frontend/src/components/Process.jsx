@@ -1,16 +1,10 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { Reveal, SectionTag } from "@/components/Reveal";
-
-const passos = [
-  { n: "01", nome: "Entender", desc: "Mapear o problema, os objetivos e as necessidades reais de quem vai usar." },
-  { n: "02", nome: "Planejar", desc: "Definir arquitetura, stack e modelo de dados antes de escrever código." },
-  { n: "03", nome: "Construir", desc: "Desenvolver com código limpo, componentes reutilizáveis e performance." },
-  { n: "04", nome: "Testar", desc: "Validar usabilidade, estabilidade e responsividade em cada entrega." },
-  { n: "05", nome: "Evoluir", desc: "Iterar com feedback real, melhorando técnica e continuamente o produto." },
-];
+import { useLang } from "@/i18n";
 
 export const Process = () => {
+  const { t } = useLang();
   const reduce = useReducedMotion();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -28,23 +22,21 @@ export const Process = () => {
       <div ref={ref} className="mx-auto max-w-6xl px-6 md:px-10">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <SectionTag>Processo</SectionTag>
+            <SectionTag>{t.processo.tag}</SectionTag>
             <Reveal delay={0.08}>
               <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-5xl">
-                Forma de trabalhar
+                {t.processo.titulo}
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.16}>
             <p className="max-w-sm text-sm leading-relaxed text-slate-400 md:text-base">
-              Um processo claro, do primeiro alinhamento às iterações que mantêm
-              o produto vivo.
+              {t.processo.desc}
             </p>
           </Reveal>
         </div>
 
         <div className="relative mt-16">
-          {/* Linha do tempo — desenha conforme o scroll (desktop) */}
           <div
             aria-hidden="true"
             className="absolute left-0 right-0 top-3 hidden h-px bg-line lg:block"
@@ -56,12 +48,12 @@ export const Process = () => {
           </div>
 
           <ol className="grid gap-10 lg:grid-cols-5 lg:gap-6">
-            {passos.map((p, i) => (
+            {t.processo.passos.map((p, i) => (
               <Reveal
                 as="li"
                 key={p.n}
                 delay={0.1 + i * 0.09}
-                data-testid={`process-step-${p.nome.toLowerCase()}`}
+                data-testid={`process-step-${p.n}`}
                 className="group relative border-l border-line pl-6 lg:border-l-0 lg:pl-0"
               >
                 <span

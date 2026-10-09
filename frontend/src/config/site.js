@@ -43,7 +43,7 @@ export const projetos = [
       appHome: "/images/vagas-home.png",
       appChat: "/images/vagas-chat.png",
     },
-    url: "",
+    url: "https://vagastapajos.com.br",
   },
   {
     id: "tapajos-combat",
@@ -61,7 +61,10 @@ export const projetos = [
     ],
     // Preencha as tecnologias quando confirmadas. Ex.: ["React", "TypeScript"]
     tech: [],
-    imagens: {},
+    imagens: {
+      mockup: "/images/combat-mockup.jpeg",
+      logo: "/images/combat-logo.jpeg",
+    },
     url: "",
   },
 ];

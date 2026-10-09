@@ -1,6 +1,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { useLang } from "@/i18n";
 import { handleEmptyLink } from "@/lib/links";
 import { HeroCanvas } from "@/components/HeroCanvas";
 
@@ -30,6 +31,7 @@ const FadeIn = ({ children, delay = 0, y = 18 }) => (
 );
 
 export const Hero = () => {
+  const { t } = useLang();
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
   const yContent = useTransform(scrollY, [0, 620], [0, reduce ? 0 : 90]);
@@ -41,7 +43,6 @@ export const Hero = () => {
       data-testid="hero-section"
       className="relative flex min-h-[100svh] items-center overflow-hidden"
     >
-      {/* Fundo interativo */}
       <HeroCanvas />
       <div
         aria-hidden="true"
@@ -59,7 +60,7 @@ export const Hero = () => {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
             </span>
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-300">
-              Disponível para novos projetos
+              {t.hero.badge}
             </span>
           </div>
         </FadeIn>
@@ -77,13 +78,13 @@ export const Hero = () => {
 
         <FadeIn delay={0.55}>
           <p className="mt-6 font-mono text-xs uppercase tracking-[0.3em] text-accent-light md:text-sm">
-            Software Developer
+            {t.hero.papel}
           </p>
         </FadeIn>
 
         <FadeIn delay={0.68}>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-400 md:text-lg">
-            {siteConfig.frase}
+            {t.hero.frase}
           </p>
         </FadeIn>
 
@@ -96,7 +97,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.97 }}
               className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light hover:shadow-[0_0_36px_rgba(37,99,235,0.45)] md:text-base"
             >
-              Ver projetos
+              {t.hero.ctaProjetos}
               <ArrowDown size={16} className="transition-transform duration-300 group-hover:translate-y-0.5" />
             </motion.a>
             <motion.a
@@ -106,7 +107,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 text-sm font-semibold text-slate-200 transition-colors duration-200 hover:border-white/30 hover:bg-white/5 md:text-base"
             >
-              Entrar em contato
+              {t.hero.ctaContato}
             </motion.a>
           </div>
         </FadeIn>
@@ -143,7 +144,6 @@ export const Hero = () => {
         </FadeIn>
       </motion.div>
 
-      {/* Indicador de scroll */}
       <motion.div
         aria-hidden="true"
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
@@ -151,7 +151,9 @@ export const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
       >
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-500">Scroll</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-slate-500">
+          {t.hero.scroll}
+        </span>
         <div className="h-12 w-px overflow-hidden bg-line">
           <motion.div
             className="h-1/2 w-full bg-accent-light"

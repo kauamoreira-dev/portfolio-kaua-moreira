@@ -2,6 +2,7 @@ import { Component, useEffect } from "react";
 import "@/App.css";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
+import { LangProvider } from "@/i18n";
 import { Cursor } from "@/components/Cursor";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
@@ -49,37 +50,39 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="grain min-h-screen bg-ink font-sans text-slate-50">
-        <a
-          href="#conteudo"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:text-white"
-        >
-          Pular para o conteúdo
-        </a>
-        <Cursor />
-        <Navbar />
-        <main id="conteudo">
-          <Hero />
-          <Marquee />
-          <About />
-          <Projects />
-          <Tech />
-          <Process />
-          <Contact />
-        </main>
-        <Footer />
-        <Toaster
-          theme="dark"
-          position="bottom-right"
-          toastOptions={{
-            style: {
-              background: "#111625",
-              border: "1px solid rgba(255,255,255,0.08)",
-              color: "#F8FAFC",
-            },
-          }}
-        />
-      </div>
+      <LangProvider>
+        <div className="grain min-h-screen bg-ink font-sans text-slate-50">
+          <a
+            href="#conteudo"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:text-white"
+          >
+            Pular para o conteúdo
+          </a>
+          <Cursor />
+          <Navbar />
+          <main id="conteudo">
+            <Hero />
+            <Marquee />
+            <About />
+            <Projects />
+            <Tech />
+            <Process />
+            <Contact />
+          </main>
+          <Footer />
+          <Toaster
+            theme="dark"
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "#111625",
+                border: "1px solid rgba(255,255,255,0.08)",
+                color: "#F8FAFC",
+              },
+            }}
+          />
+        </div>
+      </LangProvider>
     </ErrorBoundary>
   );
 }

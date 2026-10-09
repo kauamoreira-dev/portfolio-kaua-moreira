@@ -1,14 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { id: "inicio", label: "Início" },
-  { id: "sobre", label: "Sobre" },
-  { id: "projetos", label: "Projetos" },
-  { id: "tecnologias", label: "Tecnologias" },
-  { id: "contato", label: "Contato" },
-];
+import { LangToggle, useLang } from "@/i18n";
 
 const Mark = ({ className = "h-8 w-8" }) => (
   <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
@@ -21,6 +14,7 @@ const Mark = ({ className = "h-8 w-8" }) => (
 );
 
 export const Navbar = () => {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("inicio");
   const [open, setOpen] = useState(false);
@@ -33,7 +27,7 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const sections = links
+    const sections = t.nav.links
       .map((l) => document.getElementById(l.id))
       .filter(Boolean);
     const obs = new IntersectionObserver(
@@ -44,7 +38,7 @@ export const Navbar = () => {
     );
     sections.forEach((s) => obs.observe(s));
     return () => obs.disconnect();
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -80,7 +74,7 @@ export const Navbar = () => {
           </a>
 
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
-            {links.map((l) => (
+            {t.nav.links.map((l) => (
               <a
                 key={l.id}
                 href={`#${l.id}`}
@@ -101,6 +95,7 @@ export const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-2">
+            <LangToggle className="hidden md:flex" />
             <motion.a
               href="#contato"
               data-testid="nav-cta-button"
@@ -108,7 +103,7 @@ export const Navbar = () => {
               whileTap={{ scale: 0.96 }}
               className="hidden rounded-full bg-accent px-5 py-2.5 text-xs font-semibold text-white transition-colors duration-200 hover:bg-accent-light md:inline-block"
             >
-              Vamos conversar
+              {t.nav.cta}
             </motion.a>
             <button
               type="button"
@@ -150,8 +145,8 @@ export const Navbar = () => {
               </button>
             </div>
 
-            <nav className="mt-14 flex flex-col gap-2" aria-label="Menu móvel">
-              {links.map((l, i) => (
+            <nav className="mt-12 flex flex-col gap-2" aria-label="Menu móvel">
+              {t.nav.links.map((l, i) => (
                 <motion.a
                   key={l.id}
                   href={`#${l.id}`}
@@ -168,17 +163,20 @@ export const Navbar = () => {
               ))}
             </nav>
 
-            <motion.a
-              href="#contato"
-              data-testid="nav-mobile-cta-button"
-              onClick={() => setOpen(false)}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.4 }}
-              className="mt-auto rounded-full bg-accent py-4 text-center text-sm font-semibold text-white"
-            >
-              Vamos conversar
-            </motion.a>
+            <div className="mt-auto flex items-center justify-between gap-4 pt-6">
+              <LangToggle />
+              <motion.a
+                href="#contato"
+                data-testid="nav-mobile-cta-button"
+                onClick={() => setOpen(false)}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.4 }}
+                className="flex-1 rounded-full bg-accent py-4 text-center text-sm font-semibold text-white"
+              >
+                {t.nav.cta}
+              </motion.a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

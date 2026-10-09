@@ -1,17 +1,10 @@
 import { motion, useReducedMotion } from "framer-motion";
-
-const items = [
-  "Sistemas reais",
-  "Produtos digitais",
-  "Soluções escaláveis",
-  "Web & Mobile",
-  "Do planejamento ao deploy",
-  "Código limpo",
-];
+import { useLang } from "@/i18n";
 
 export const Marquee = () => {
+  const { t } = useLang();
   const reduce = useReducedMotion();
-  const row = [...items, ...items];
+  const row = [...t.marquee, ...t.marquee];
 
   return (
     <div
@@ -24,14 +17,14 @@ export const Marquee = () => {
         animate={reduce ? {} : { x: ["0%", "-50%"] }}
         transition={{ duration: 32, ease: "linear", repeat: Infinity }}
       >
-        {row.map((t, i) => (
-          <span key={i} className="flex items-center">
+        {row.map((item, i) => (
+          <span key={`${item}-${i}`} className="flex items-center">
             <span
               className={`px-6 font-display text-2xl font-bold uppercase tracking-tight md:px-10 md:text-4xl ${
                 i % 2 === 0 ? "text-white/90" : "text-outline"
               }`}
             >
-              {t}
+              {item}
             </span>
             <span className="h-2 w-2 rotate-45 bg-accent" aria-hidden="true" />
           </span>

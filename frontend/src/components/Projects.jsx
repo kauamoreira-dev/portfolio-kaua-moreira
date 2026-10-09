@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import { projetos } from "@/config/site";
+import { useLang } from "@/i18n";
 import { handleEmptyLink } from "@/lib/links";
 
 const FrameBar = ({ label }) => (
@@ -64,55 +65,85 @@ const VagasShowcase = ({ imagens }) => (
   </div>
 );
 
-// Placeholder temático (brackets de competição) até o screenshot real existir.
-const CombatPlaceholder = () => (
-  <div
-    data-testid="project-media-tapajos-combat"
-    className="relative flex min-h-[340px] flex-col justify-center overflow-hidden rounded-xl border border-line bg-gradient-to-br from-ink-soft to-ink-raise p-8 lg:h-[520px]"
-  >
-    <div className="flex items-stretch justify-between gap-6 opacity-70">
-      <div className="flex w-1/4 flex-col justify-between gap-4">
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="h-10 rounded-md border border-white/10 bg-white/[0.04]" />
-        ))}
+// Mockup real do app + cartão com o logotipo da marca.
+const CombatShowcase = ({ imagens }) => (
+  <div className="relative lg:pl-24" data-testid="project-media-tapajos-combat">
+    <Reveal y={30}>
+      <div className="overflow-hidden rounded-xl border border-line bg-ink-soft shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+        <img
+          src={imagens.mockup}
+          alt="Mockup do aplicativo Tapajós Combat — eventos, atletas e academias"
+          width={1092}
+          height={1440}
+          loading="lazy"
+          className="w-full"
+        />
       </div>
-      <div className="flex w-1/4 flex-col justify-around">
-        {[0, 1].map((i) => (
-          <div key={i} className="h-10 rounded-md border border-accent/25 bg-accent/[0.08]" />
-        ))}
-      </div>
-      <div className="flex w-1/4 items-center">
-        <div className="h-12 w-full rounded-md border border-accent/40 bg-accent/[0.12]" />
-      </div>
-      <div className="flex w-1/5 items-center justify-center">
-        <div className="h-16 w-16 rotate-45 rounded-lg border border-accent-light/50 bg-accent/[0.15]" />
-      </div>
-    </div>
-    <span className="absolute bottom-4 right-4 rounded-full border border-white/10 bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
-      Screenshot em breve
-    </span>
+    </Reveal>
+    <Reveal y={20} delay={0.12} className="mt-5 lg:mt-0 lg:absolute lg:-left-2 lg:top-12 lg:w-[38%]">
+      <img
+        src={imagens.logo}
+        alt="Logotipo do Tapajós Combat"
+        width={1600}
+        height={800}
+        loading="lazy"
+        className="w-full rounded-lg border border-line shadow-[0_20px_60px_rgba(0,0,0,0.5)] lg:-rotate-3"
+      />
+    </Reveal>
   </div>
 );
 
-const StatusBadge = ({ p }) => {
-  const dev = p.status === "Em desenvolvimento";
+const StatusBadge = ({ text, testid }) => {
+  const dev = text.dev;
   return (
     <span
-      data-testid={`project-status-${p.id}`}
+      data-testid={testid}
       className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
         dev ? "border-amber-400/30 text-amber-200/90" : "border-accent-light/30 text-accent-light"
       }`}
     >
       {dev && <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-300" />}
-      {p.status}
+      {text.status}
     </span>
   );
 };
 
 const ProjectRow = ({ p, i, flip }) => {
-  const reduce = useReducedMotion();
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
-  const dev = p.status === "Em desenvolvimento";
+  const text = t.projetos.items[p.id];
+  const labels = t.projetos;
+
+  const projectLink = (className) =>
+    p.url ? (
+      <a
+        href={p.url}
+        target="_blank"
+        rel="noreferrer"
+        data-testid={`project-link-${p.id}`}
+        className={className}
+      >
+        {labels.verProjeto}
+        <ArrowUpRight
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </a>
+    ) : (
+      <a
+        href="#"
+        onClick={handleEmptyLink}
+        data-testid={`project-link-${p.id}`}
+        aria-label={`${labels.verProjeto} — ${text.subtitulo} (link não configurado)`}
+        className={className}
+      >
+        {labels.verProjeto}
+        <ArrowUpRight
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </a>
+    );
 
   return (
     <article
@@ -123,9 +154,7 @@ const ProjectRow = ({ p, i, flip }) => {
         {p.id === "vagas-tapajos" ? (
           <VagasShowcase imagens={p.imagens} />
         ) : (
-          <Reveal y={30}>
-            <CombatPlaceholder />
-          </Reveal>
+          <CombatShowcase imagens={p.imagens} />
         )}
       </div>
 
@@ -135,10 +164,10 @@ const ProjectRow = ({ p, i, flip }) => {
             <span className="font-mono text-sm text-slate-500">0{i + 1}</span>
             {p.destaque && (
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
-                Projeto em destaque
+                {labels.destaqueLabel}
               </span>
             )}
-            <StatusBadge p={p} />
+            <StatusBadge text={text} testid={`project-status-${p.id}`} />
           </div>
         </Reveal>
 
@@ -148,28 +177,28 @@ const ProjectRow = ({ p, i, flip }) => {
               p.destaque ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"
             }`}
           >
-            {p.titulo}
+            {p.id === "vagas-tapajos" ? "Vagas Tapajós" : "Tapajós Combat"}
           </h3>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-accent-light">
-            {p.subtitulo}
+            {text.subtitulo}
           </p>
         </Reveal>
 
         <Reveal delay={0.14}>
           <p className="mt-5 text-sm leading-relaxed text-slate-400 md:text-base">
-            {p.descricao}
+            {text.descricao}
           </p>
         </Reveal>
 
         <Reveal delay={0.18}>
           <h4 className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
-            {dev ? "Foco do desenvolvimento" : "Principais funcionalidades"}
+            {text.dev ? labels.devFuncTitle : labels.funcTitle}
           </h4>
           <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
-            {p.funcionalidades.map((f) => (
+            {text.funcionalidades.map((f) => (
               <li key={f} className="flex items-start gap-2 text-sm text-slate-300">
                 <Check size={15} className="mt-0.5 shrink-0 text-accent-light" />
                 {f}
@@ -181,13 +210,13 @@ const ProjectRow = ({ p, i, flip }) => {
         {p.tech.length > 0 && (
           <Reveal delay={0.2}>
             <ul className="mt-7 flex flex-wrap gap-2">
-              {p.tech.map((t) => (
+              {p.tech.map((tech) => (
                 <li
-                  key={t}
-                  data-testid={`project-tech-${p.id}-${t.toLowerCase().replace(/\./g, "")}`}
+                  key={tech}
+                  data-testid={`project-tech-${p.id}-${tech.toLowerCase().replace(/\./g, "")}`}
                   className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-slate-300 transition-[border-color,color] duration-200 hover:border-accent-light/60 hover:text-accent-light"
                 >
-                  {t}
+                  {tech}
                 </li>
               ))}
             </ul>
@@ -196,27 +225,8 @@ const ProjectRow = ({ p, i, flip }) => {
 
         <Reveal delay={0.24}>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            {p.url ? (
-              <a
-                href={p.url}
-                target="_blank"
-                rel="noreferrer"
-                data-testid={`project-link-${p.id}`}
-                className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light"
-              >
-                Ver projeto
-                <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            ) : (
-              <a
-                href="#"
-                onClick={handleEmptyLink}
-                data-testid={`project-link-${p.id}`}
-                className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light"
-              >
-                Ver projeto
-                <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+            {projectLink(
+              "group inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light"
             )}
             <button
               type="button"
@@ -224,7 +234,7 @@ const ProjectRow = ({ p, i, flip }) => {
               onClick={() => setOpen(true)}
               className="inline-flex items-center gap-1.5 rounded-full border border-line px-6 py-3 text-sm font-medium text-slate-200 transition-colors duration-200 hover:border-white/30 hover:bg-white/5"
             >
-              Detalhes
+              {labels.detalhes}
             </button>
           </div>
         </Reveal>
@@ -237,15 +247,15 @@ const ProjectRow = ({ p, i, flip }) => {
         >
           <DialogHeader>
             <DialogTitle className="font-display text-2xl font-bold text-white">
-              {p.titulo}
+              {p.id === "vagas-tapajos" ? "Vagas Tapajós" : "Tapajós Combat"}
             </DialogTitle>
             <DialogDescription className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent-light">
-              {p.subtitulo} — {p.status}
+              {text.subtitulo} — {text.status}
             </DialogDescription>
           </DialogHeader>
-          <p className="text-sm leading-relaxed text-slate-400">{p.descricao}</p>
+          <p className="text-sm leading-relaxed text-slate-400">{text.descricao}</p>
           <ul className="space-y-2.5">
-            {p.funcionalidades.map((f) => (
+            {text.funcionalidades.map((f) => (
               <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
                 <Check size={16} className="mt-0.5 shrink-0 text-accent-light" />
                 {f}
@@ -255,19 +265,17 @@ const ProjectRow = ({ p, i, flip }) => {
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
             {p.tech.length > 0 ? (
               <ul className="flex flex-wrap gap-2">
-                {p.tech.map((t) => (
+                {p.tech.map((tech) => (
                   <li
-                    key={t}
+                    key={tech}
                     className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-slate-300"
                   >
-                    {t}
+                    {tech}
                   </li>
                 ))}
               </ul>
             ) : (
-              <span className="font-mono text-[11px] text-slate-500">
-                Tecnologias a definir
-              </span>
+              <span className="font-mono text-[11px] text-slate-500">{labels.techTBD}</span>
             )}
             {p.url ? (
               <a
@@ -277,7 +285,7 @@ const ProjectRow = ({ p, i, flip }) => {
                 data-testid={`project-dialog-link-${p.id}`}
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-light hover:underline"
               >
-                Ver projeto <ArrowUpRight size={15} />
+                {labels.verProjeto} <ArrowUpRight size={15} />
               </a>
             ) : (
               <a
@@ -286,7 +294,7 @@ const ProjectRow = ({ p, i, flip }) => {
                 data-testid={`project-dialog-link-${p.id}`}
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500"
               >
-                Link em breve
+                {labels.linkEmBreve}
               </a>
             )}
           </div>
@@ -296,44 +304,49 @@ const ProjectRow = ({ p, i, flip }) => {
   );
 };
 
-export const Projects = () => (
-  <section
-    id="projetos"
-    data-testid="projects-section"
-    className="relative border-t border-line py-24 md:py-32"
-  >
-    <div className="mx-auto max-w-6xl px-6 md:px-10">
-      <div className="flex flex-wrap items-end justify-between gap-6">
-        <div>
-          <SectionTag>Portfólio</SectionTag>
-          <Reveal delay={0.08}>
-            <h2 className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-7xl">
-              Projetos<span className="text-accent-light">.</span>
-            </h2>
+export const Projects = () => {
+  const { t } = useLang();
+  const labels = t.projetos;
+
+  return (
+    <section
+      id="projetos"
+      data-testid="projects-section"
+      className="relative border-t border-line py-24 md:py-32"
+    >
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <SectionTag>{labels.tag}</SectionTag>
+            <Reveal delay={0.08}>
+              <h2 className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-7xl">
+                {labels.titulo}
+                <span className="text-accent-light">.</span>
+              </h2>
+            </Reveal>
+          </div>
+          <Reveal delay={0.16}>
+            <p className="max-w-sm text-sm leading-relaxed text-slate-400 md:text-base">
+              {labels.desc}
+            </p>
           </Reveal>
         </div>
-        <Reveal delay={0.16}>
-          <p className="max-w-sm text-sm leading-relaxed text-slate-400 md:text-base">
-            Produtos reais construídos de ponta a ponta — do planejamento ao
-            deploy, web e mobile.
+
+        <div className="mt-20 space-y-24 md:space-y-32 lg:mt-28 lg:space-y-40">
+          {projetos.map((p, i) => (
+            <ProjectRow key={p.id} p={p} i={i} flip={i % 2 === 1} />
+          ))}
+        </div>
+
+        <Reveal delay={0.1}>
+          <p className="mt-16 font-mono text-sm text-slate-500">
+            <span className="text-2xl font-semibold text-accent-light">
+              0{projetos.length}
+            </span>{" "}
+            {labels.countSuf}
           </p>
         </Reveal>
       </div>
-
-      <div className="mt-20 space-y-24 md:space-y-32 lg:mt-28 lg:space-y-40">
-        {projetos.map((p, i) => (
-          <ProjectRow key={p.id} p={p} i={i} flip={i % 2 === 1} />
-        ))}
-      </div>
-
-      <Reveal delay={0.1}>
-        <p className="mt-16 font-mono text-sm text-slate-500">
-          <span className="text-2xl font-semibold text-accent-light">
-            0{projetos.length}
-          </span>{" "}
-          / produtos em destaque
-        </p>
-      </Reveal>
-    </div>
-  </section>
-);
+    </section>
+  );
+};

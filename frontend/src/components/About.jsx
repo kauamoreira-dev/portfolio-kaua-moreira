@@ -2,17 +2,13 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useSpring } from "framer-motion";
 import { Code2, Layers, Smartphone, Globe } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
+import { useLang } from "@/i18n";
 
-const indicadores = [
-  { icone: Code2, titulo: "Software Development", desc: "Arquiteturas robustas e escaláveis" },
-  { icone: Layers, titulo: "Product Building", desc: "Visão de produto da ideia ao deploy" },
-  { icone: Globe, titulo: "Web Applications", desc: "Interfaces rápidas e reativas com React e TypeScript" },
-  { icone: Smartphone, titulo: "Mobile Applications", desc: "Apps Android com Capacitor" },
-];
+const icones = [Code2, Layers, Globe, Smartphone];
 
 export const About = () => {
+  const { t } = useLang();
   const reduce = useReducedMotion();
-  const imgRef = useRef(null);
   const x = useSpring(0, { stiffness: 60, damping: 18 });
   const y = useSpring(0, { stiffness: 60, damping: 18 });
 
@@ -33,14 +29,12 @@ export const About = () => {
   return (
     <section id="sobre" data-testid="about-section" className="relative border-t border-line py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-        {/* Foto */}
         <Reveal className="relative">
           <div
             aria-hidden="true"
             className="absolute -inset-3 rounded-3xl border border-accent/15"
           />
           <div
-            ref={imgRef}
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
             data-cursor-hover
@@ -64,51 +58,50 @@ export const About = () => {
               className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/90 to-transparent"
             />
             <p className="absolute bottom-5 left-5 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-300">
-              Kauã Moreira — Software Developer
+              Kauã Moreira — {t.hero.papel}
             </p>
           </div>
         </Reveal>
 
-        {/* Texto */}
         <div>
-          <SectionTag>Sobre mim</SectionTag>
+          <SectionTag>{t.sobre.tag}</SectionTag>
           <Reveal delay={0.08}>
             <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-5xl">
-              Do problema real ao produto funcionando.
+              {t.sobre.titulo}
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-6 text-base leading-relaxed text-slate-400 md:text-lg">
-              Cursando Análise e Desenvolvimento de Sistemas, desenvolvo aplicações reais —
-              da arquitetura ao deploy. Trabalho com desenvolvimento de software e produtos
-              digitais, transformando necessidades em soluções funcionais, simples e escaláveis.
+              {t.sobre.p1}
             </p>
           </Reveal>
           <Reveal delay={0.22}>
             <p className="mt-4 text-base leading-relaxed text-slate-400 md:text-lg">
-              Estou sempre evoluindo tecnicamente, explorando ferramentas e práticas que
-              tornem cada entrega melhor que a anterior.
+              {t.sobre.p2}
             </p>
           </Reveal>
 
           <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-            {indicadores.map((ind, i) => (
-              <Reveal
-                key={ind.titulo}
-                delay={0.1 + i * 0.07}
-                className="group bg-ink p-6 transition-colors duration-300 hover:bg-ink-raise"
-                data-testid={`about-indicator-${ind.titulo.toLowerCase().replace(/\s+/g, "-")}`}
-              >
-                <ind.icone
-                  size={20}
-                  className="text-slate-500 transition-colors duration-300 group-hover:text-accent-light"
-                />
-                <h3 className="mt-4 text-sm font-semibold tracking-wide text-white md:text-base">
-                  {ind.titulo}
-                </h3>
-                <p className="mt-1.5 text-sm text-slate-500">{ind.desc}</p>
-              </Reveal>
-            ))}
+            {t.sobre.indicadores.map((ind, i) => {
+              const Icone = icones[i] || Code2;
+              return (
+                <Reveal
+                  key={ind.titulo}
+                  delay={0.1 + i * 0.07}
+                  className="group bg-ink p-6 transition-colors duration-300 hover:bg-ink-raise"
+                  data-testid={`about-indicator-${ind.titulo.toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  <Icone
+                    size={20}
+                    className="text-slate-500 transition-colors duration-300 group-hover:text-accent-light"
+                  />
+                  <h3 className="mt-4 text-sm font-semibold tracking-wide text-white md:text-base">
+                    {ind.titulo}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-slate-500">{ind.desc}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </div>
