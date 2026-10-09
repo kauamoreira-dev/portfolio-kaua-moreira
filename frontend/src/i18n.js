@@ -124,7 +124,7 @@ export const dict = {
       texto:
         "Estou aberto a projetos, oportunidades profissionais e boas conversas sobre tecnologia.",
       cta: "Vamos conversar",
-      canais: { linkedin: "LinkedIn", github: "GitHub", email: "E-mail" },
+      canais: { linkedin: "LinkedIn", github: "GitHub", instagram: "Instagram", whatsapp: "WhatsApp", email: "E-mail" },
     },
     toast: {
       titulo: "Link ainda não configurado",
@@ -253,7 +253,7 @@ export const dict = {
       texto:
         "I'm open to projects, professional opportunities and good conversations about technology.",
       cta: "Let's talk",
-      canais: { linkedin: "LinkedIn", github: "GitHub", email: "Email" },
+      canais: { linkedin: "LinkedIn", github: "GitHub", instagram: "Instagram", whatsapp: "WhatsApp", email: "Email" },
     },
     toast: {
       titulo: "Link not set up yet",

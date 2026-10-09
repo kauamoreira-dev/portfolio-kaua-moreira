@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Github, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import { siteConfig } from "@/config/site";
 import { useLang } from "@/i18n";
 import { handleEmptyLink } from "@/lib/links";
 
-const icones = { linkedin: Linkedin, github: Github, email: Mail };
+const icones = { linkedin: Linkedin, github: Github, instagram: Instagram, whatsapp: MessageCircle, email: Mail };
 
 export const Contact = () => {
   const { t } = useLang();
@@ -13,8 +13,10 @@ export const Contact = () => {
   const canais = [
     { id: "linkedin", url: siteConfig.social.linkedin },
     { id: "github", url: siteConfig.social.github },
+    { id: "instagram", url: siteConfig.social.instagram },
+    { id: "whatsapp", url: siteConfig.whatsapp },
     { id: "email", url: siteConfig.email ? `mailto:${siteConfig.email}` : "" },
-  ];
+  ].filter((c) => c.url);
 
   return (
     <section

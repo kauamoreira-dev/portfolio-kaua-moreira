@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Github, Instagram, Linkedin } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useLang } from "@/i18n";
 import { handleEmptyLink } from "@/lib/links";
@@ -115,28 +115,25 @@ export const Hero = () => {
         <FadeIn delay={0.95}>
           <div className="mt-12 flex items-center gap-5">
             <span className="h-px w-10 bg-line" aria-hidden="true" />
-            <a
-              href={siteConfig.social.github || "#"}
-              onClick={siteConfig.social.github ? undefined : handleEmptyLink}
-              target={siteConfig.social.github ? "_blank" : undefined}
-              rel="noreferrer"
-              data-testid="hero-social-github"
-              aria-label="GitHub de Kauã Moreira"
-              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-400 transition-colors duration-200 hover:text-accent-light"
-            >
-              <Github size={16} /> GitHub
-            </a>
-            <a
-              href={siteConfig.social.linkedin || "#"}
-              onClick={siteConfig.social.linkedin ? undefined : handleEmptyLink}
-              target={siteConfig.social.linkedin ? "_blank" : undefined}
-              rel="noreferrer"
-              data-testid="hero-social-linkedin"
-              aria-label="LinkedIn de Kauã Moreira"
-              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-400 transition-colors duration-200 hover:text-accent-light"
-            >
-              <Linkedin size={16} /> LinkedIn
-            </a>
+            {[
+              { id: "github", url: siteConfig.social.github, Icone: Github, label: "GitHub" },
+              { id: "linkedin", url: siteConfig.social.linkedin, Icone: Linkedin, label: "LinkedIn" },
+              { id: "instagram", url: siteConfig.social.instagram, Icone: Instagram, label: "Instagram" },
+            ]
+              .filter((s) => s.url)
+              .map((s) => (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-testid={`hero-social-${s.id}`}
+                  aria-label={`${s.label} de Kauã Moreira`}
+                  className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-400 transition-colors duration-200 hover:text-accent-light"
+                >
+                  <s.Icone size={16} /> {s.label}
+                </a>
+              ))}
             <span className="hidden items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500 md:inline-flex">
               <ArrowUpRight size={14} className="text-accent-light" /> {siteConfig.papel}
             </span>

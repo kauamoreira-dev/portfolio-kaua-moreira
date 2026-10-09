@@ -9,14 +9,15 @@ export const siteConfig = {
   frase:
     "Desenvolvo sistemas e produtos digitais transformando problemas reais em soluções simples, funcionais e escaláveis.",
 
-  // Cole seu e-mail entre as aspas. Ex.: "kaua@email.com"
-  email: "",
+  email: "kauacirinom@icloud.com",
 
-  // Cole seus links entre as aspas. Ex.: "https://github.com/seuusuario"
   social: {
     github: "",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/kauamoreira-dev/",
+    instagram: "https://instagram.com/kaua.mcirino",
   },
+
+  whatsapp: "https://wa.me/5569984299960",
 };
 
 // Links dos projetos — cole as URLs quando estiverem prontos ("Ver projeto").

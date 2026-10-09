@@ -40,7 +40,7 @@ Criar um portfólio pessoal premium, moderno e altamente profissional para o des
 - NÃO verificado ao vivo (site deployado): SEO tags e análise só valem no preview até o Deploy
 
 ## Backlog
-- P0: preencher GitHub, LinkedIn e e-mail em `src/config/site.js`
+- P0: preencher GitHub em `src/config/site.js` (e-mail, LinkedIn, Instagram e WhatsApp já configurados com dados reais)
 - P1: tecnologias confirmadas do Tapajós Combat; og:image 1200×630 + canonical/sitemap quando houver domínio próprio
 - P2: download de CV em PDF
 
