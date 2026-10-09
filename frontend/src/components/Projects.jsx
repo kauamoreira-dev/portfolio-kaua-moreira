@@ -1,10 +1,5 @@
-import { useMemo, useState } from "react";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-} from "framer-motion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import {
   Dialog,
@@ -17,239 +12,269 @@ import { Reveal, SectionTag } from "@/components/Reveal";
 import { projetos } from "@/config/site";
 import { handleEmptyLink } from "@/lib/links";
 
-// Composição abstrata — área reservada para screenshots reais do projeto.
-const ProjectVisual = ({ id }) => {
-  if (id === "vagas-tapajos")
-    return (
-      <div className="space-y-2.5">
-        {[80, 62, 71].map((w, i) => (
-          <div key={i} className="flex items-center gap-3 rounded-lg border border-white/5 bg-white/[0.03] p-3">
-            <div className="h-8 w-8 rounded-md bg-accent/25" />
-            <div className="flex-1 space-y-1.5">
-              <div className="h-1.5 rounded-full bg-white/20" style={{ width: `${w}%` }} />
-              <div className="h-1.5 w-2/5 rounded-full bg-white/10" />
-            </div>
-            <div className="h-4 w-10 rounded-full bg-accent/30" />
-          </div>
-        ))}
+const FrameBar = ({ label }) => (
+  <div className="flex items-center gap-1.5 border-b border-line bg-ink-card px-4 py-2.5">
+    <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]/70" />
+    <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]/70" />
+    <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]/70" />
+    <span className="ml-3 rounded-full bg-white/5 px-3 py-0.5 font-mono text-[10px] text-slate-400">
+      {label}
+    </span>
+  </div>
+);
+
+// Composição editorial — web em frame de browser + telas do app sobrepostas.
+const VagasShowcase = ({ imagens }) => (
+  <div className="relative lg:pr-28" data-testid="project-media-vagas-tapajos">
+    <Reveal y={30}>
+      <div className="overflow-hidden rounded-xl border border-line bg-ink-soft shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+        <FrameBar label="Vagas Tapajós — Web" />
+        <img
+          src={imagens.web}
+          alt="Área do candidato do Vagas Tapajós no navegador"
+          width={920}
+          height={1002}
+          loading="lazy"
+          className="w-full"
+        />
       </div>
-    );
-  if (id === "norte-gestao")
-    return (
-      <div className="grid grid-cols-3 gap-2.5">
-        {[0, 1, 2].map((i) => (
-          <div key={i} className="rounded-lg border border-white/5 bg-white/[0.03] p-3">
-            <div className="h-1.5 w-3/4 rounded-full bg-white/15" />
-            <div className="mt-2 h-3 w-1/2 rounded-full bg-accent/35" />
-          </div>
-        ))}
-        <div className="col-span-3 flex h-20 items-end gap-2 rounded-lg border border-white/5 bg-white/[0.03] p-3">
-          {[35, 55, 42, 70, 58, 82, 64, 90, 74].map((h, i) => (
-            <div key={i} className="flex-1 rounded-sm bg-gradient-to-t from-accent/50 to-accent-cyan/30" style={{ height: `${h}%` }} />
-          ))}
-        </div>
-      </div>
-    );
-  return (
-    <div className="grid grid-cols-3 gap-2.5">
-      {[0, 1, 2, 3, 4, 5].map((i) => (
-        <div key={i} className="space-y-1.5 rounded-lg border border-white/5 bg-white/[0.03] p-2.5">
-          <div className="aspect-square rounded-md bg-gradient-to-br from-white/10 to-white/[0.03]" />
-          <div className="h-1.5 w-4/5 rounded-full bg-white/20" />
-          <div className="h-1.5 w-2/5 rounded-full bg-emerald-400/40" />
-        </div>
-      ))}
+    </Reveal>
+    <div className="mt-5 grid grid-cols-2 gap-4 lg:mt-0 lg:block lg:absolute lg:-right-2 lg:top-1/2 lg:w-[30%] lg:-translate-y-1/2 lg:space-y-8">
+      <Reveal y={30} delay={0.1}>
+        <img
+          src={imagens.appHome}
+          alt="Aplicativo Android do Vagas Tapajós — lista de vagas"
+          width={752}
+          height={921}
+          loading="lazy"
+          className="w-full rounded-lg border border-line shadow-[0_20px_60px_rgba(0,0,0,0.5)] lg:rotate-2"
+        />
+      </Reveal>
+      <Reveal y={30} delay={0.18}>
+        <img
+          src={imagens.appChat}
+          alt="Chat entre candidato e empresa no aplicativo do Vagas Tapajós"
+          width={723}
+          height={902}
+          loading="lazy"
+          className="w-full rounded-lg border border-line shadow-[0_20px_60px_rgba(0,0,0,0.5)] lg:-rotate-2"
+        />
+      </Reveal>
     </div>
+  </div>
+);
+
+// Placeholder temático (brackets de competição) até o screenshot real existir.
+const CombatPlaceholder = () => (
+  <div
+    data-testid="project-media-tapajos-combat"
+    className="relative flex min-h-[340px] flex-col justify-center overflow-hidden rounded-xl border border-line bg-gradient-to-br from-ink-soft to-ink-raise p-8 lg:h-[520px]"
+  >
+    <div className="flex items-stretch justify-between gap-6 opacity-70">
+      <div className="flex w-1/4 flex-col justify-between gap-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="h-10 rounded-md border border-white/10 bg-white/[0.04]" />
+        ))}
+      </div>
+      <div className="flex w-1/4 flex-col justify-around">
+        {[0, 1].map((i) => (
+          <div key={i} className="h-10 rounded-md border border-accent/25 bg-accent/[0.08]" />
+        ))}
+      </div>
+      <div className="flex w-1/4 items-center">
+        <div className="h-12 w-full rounded-md border border-accent/40 bg-accent/[0.12]" />
+      </div>
+      <div className="flex w-1/5 items-center justify-center">
+        <div className="h-16 w-16 rotate-45 rounded-lg border border-accent-light/50 bg-accent/[0.15]" />
+      </div>
+    </div>
+    <span className="absolute bottom-4 right-4 rounded-full border border-white/10 bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
+      Screenshot em breve
+    </span>
+  </div>
+);
+
+const StatusBadge = ({ p }) => {
+  const dev = p.status === "Em desenvolvimento";
+  return (
+    <span
+      data-testid={`project-status-${p.id}`}
+      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
+        dev ? "border-amber-400/30 text-amber-200/90" : "border-accent-light/30 text-accent-light"
+      }`}
+    >
+      {dev && <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-300" />}
+      {p.status}
+    </span>
   );
 };
 
-const ProjectCard = ({ projeto, index }) => {
+const ProjectRow = ({ p, i, flip }) => {
   const reduce = useReducedMotion();
-  const fine = useMemo(
-    () => window.matchMedia("(pointer: fine)").matches,
-    []
-  );
-  const interactive = fine && !reduce;
-
-  const rx = useSpring(0, { stiffness: 160, damping: 20 });
-  const ry = useSpring(0, { stiffness: 160, damping: 20 });
-  const px = useSpring(0, { stiffness: 160, damping: 20 });
-  const py = useSpring(0, { stiffness: 160, damping: 20 });
-  const [detailsOpen, setDetailsOpen] = useState(false);
-
-  const onMouseMove = (e) => {
-    if (!interactive) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    const nx = (e.clientX - r.left) / r.width - 0.5;
-    const ny = (e.clientY - r.top) / r.height - 0.5;
-    rx.set(-ny * 5);
-    ry.set(nx * 7);
-    px.set(nx * -14);
-    py.set(ny * -10);
-    e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-  };
-
-  const onMouseLeave = () => {
-    rx.set(0);
-    ry.set(0);
-    px.set(0);
-    py.set(0);
-  };
-
-  const projectLink = (label, testid, className) =>
-    projeto.url ? (
-      <a
-        href={projeto.url}
-        target="_blank"
-        rel="noreferrer"
-        data-testid={testid}
-        className={className}
-      >
-        {label}
-      </a>
-    ) : (
-      <a
-        href="#"
-        onClick={handleEmptyLink}
-        data-testid={testid}
-        aria-label={`${label} — ${projeto.titulo} (link não configurado)`}
-        className={className}
-      >
-        {label}
-      </a>
-    );
+  const [open, setOpen] = useState(false);
+  const dev = p.status === "Em desenvolvimento";
 
   return (
-    <>
-      <Reveal>
-        <motion.article
-          data-testid={`project-card-${projeto.id}`}
-          data-cursor-hover
-          onMouseMove={onMouseMove}
-          onMouseLeave={onMouseLeave}
-          style={{
-            rotateX: interactive ? rx : 0,
-            rotateY: interactive ? ry : 0,
-            transformPerspective: 1000,
-          }}
-          className="group relative overflow-hidden rounded-2xl border border-line bg-ink-card transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-[0_20px_70px_rgba(37,99,235,0.14)]"
-        >
-          {/* Brilho que segue o cursor */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{
-              background:
-                "radial-gradient(560px circle at var(--mx, 50%) var(--my, 50%), rgba(59,130,246,0.13), transparent 45%)",
-            }}
-          />
+    <article
+      data-testid={`project-card-${p.id}`}
+      className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
+        {p.id === "vagas-tapajos" ? (
+          <VagasShowcase imagens={p.imagens} />
+        ) : (
+          <Reveal y={30}>
+            <CombatPlaceholder />
+          </Reveal>
+        )}
+      </div>
 
-          {/* Área visual */}
-          <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-ink-soft to-ink-raise p-5 md:p-7">
-            <motion.div
-              style={{ x: interactive ? px : 0, y: interactive ? py : 0 }}
-              className="h-full w-full"
-            >
-              <ProjectVisual id={projeto.id} />
-            </motion.div>
-            <span className="absolute bottom-3 right-3 rounded-full border border-white/10 bg-ink/80 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
-              Screenshot em breve
-            </span>
-            <span className="absolute left-4 top-4 font-mono text-[11px] text-slate-500">
-              0{index + 1}
-            </span>
+      <div className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
+        <Reveal>
+          <div className="flex flex-wrap items-center gap-4">
+            <span className="font-mono text-sm text-slate-500">0{i + 1}</span>
+            {p.destaque && (
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
+                Projeto em destaque
+              </span>
+            )}
+            <StatusBadge p={p} />
           </div>
+        </Reveal>
 
-          <div className="p-6 md:p-8">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="font-display text-2xl font-bold tracking-tight text-white">
-                {projeto.titulo}
-              </h3>
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent-light">
-                {projeto.subtitulo}
-              </p>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-slate-400 md:text-base">
-              {projeto.descricao}
-            </p>
+        <Reveal delay={0.06}>
+          <h3
+            className={`mt-5 font-display font-extrabold tracking-tight text-white ${
+              p.destaque ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"
+            }`}
+          >
+            {p.titulo}
+          </h3>
+        </Reveal>
 
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {projeto.tech.map((t) => (
+        <Reveal delay={0.1}>
+          <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-accent-light">
+            {p.subtitulo}
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.14}>
+          <p className="mt-5 text-sm leading-relaxed text-slate-400 md:text-base">
+            {p.descricao}
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.18}>
+          <h4 className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
+            {dev ? "Foco do desenvolvimento" : "Principais funcionalidades"}
+          </h4>
+          <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+            {p.funcionalidades.map((f) => (
+              <li key={f} className="flex items-start gap-2 text-sm text-slate-300">
+                <Check size={15} className="mt-0.5 shrink-0 text-accent-light" />
+                {f}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        {p.tech.length > 0 && (
+          <Reveal delay={0.2}>
+            <ul className="mt-7 flex flex-wrap gap-2">
+              {p.tech.map((t) => (
                 <li
                   key={t}
-                  data-testid={`project-tech-${projeto.id}-${t.toLowerCase().replace(/\./g, "")}`}
+                  data-testid={`project-tech-${p.id}-${t.toLowerCase().replace(/\./g, "")}`}
                   className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-slate-300 transition-[border-color,color] duration-200 hover:border-accent-light/60 hover:text-accent-light"
                 >
                   {t}
                 </li>
               ))}
             </ul>
+          </Reveal>
+        )}
 
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              {projectLink(
-                <span className="inline-flex items-center gap-1.5">
-                  Ver projeto
-                  <ArrowUpRight
-                    size={15}
-                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </span>,
-                `project-link-${projeto.id}`,
-                "inline-flex items-center gap-1.5 text-sm font-semibold text-accent-light underline-offset-4 hover:underline"
-              )}
-              <button
-                type="button"
-                data-testid={`project-details-button-${projeto.id}`}
-                onClick={() => setDetailsOpen(true)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-line px-5 py-2 text-sm font-medium text-slate-200 transition-colors duration-200 hover:border-white/30 hover:bg-white/5"
+        <Reveal delay={0.24}>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            {p.url ? (
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noreferrer"
+                data-testid={`project-link-${p.id}`}
+                className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light"
               >
-                Detalhes
-              </button>
-            </div>
+                Ver projeto
+                <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            ) : (
+              <a
+                href="#"
+                onClick={handleEmptyLink}
+                data-testid={`project-link-${p.id}`}
+                className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light"
+              >
+                Ver projeto
+                <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            )}
+            <button
+              type="button"
+              data-testid={`project-details-button-${p.id}`}
+              onClick={() => setOpen(true)}
+              className="inline-flex items-center gap-1.5 rounded-full border border-line px-6 py-3 text-sm font-medium text-slate-200 transition-colors duration-200 hover:border-white/30 hover:bg-white/5"
+            >
+              Detalhes
+            </button>
           </div>
-        </motion.article>
-      </Reveal>
+        </Reveal>
+      </div>
 
-      <Dialog open={detailsOpen} onOpenChange={setDetailsOpen}>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
-          data-testid={`project-dialog-${projeto.id}`}
+          data-testid={`project-dialog-${p.id}`}
           className="max-w-lg border-line bg-ink-card text-slate-100"
         >
           <DialogHeader>
             <DialogTitle className="font-display text-2xl font-bold text-white">
-              {projeto.titulo}
+              {p.titulo}
             </DialogTitle>
             <DialogDescription className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent-light">
-              {projeto.subtitulo}
+              {p.subtitulo} — {p.status}
             </DialogDescription>
           </DialogHeader>
-          <p className="text-sm leading-relaxed text-slate-400">{projeto.descricao}</p>
+          <p className="text-sm leading-relaxed text-slate-400">{p.descricao}</p>
           <ul className="space-y-2.5">
-            {projeto.destaques.map((d) => (
-              <li key={d} className="flex items-start gap-2.5 text-sm text-slate-300">
+            {p.funcionalidades.map((f) => (
+              <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
                 <Check size={16} className="mt-0.5 shrink-0 text-accent-light" />
-                {d}
+                {f}
               </li>
             ))}
           </ul>
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
-            <ul className="flex flex-wrap gap-2">
-              {projeto.tech.map((t) => (
-                <li
-                  key={t}
-                  className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-slate-300"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
-            {projeto.url ? (
+            {p.tech.length > 0 ? (
+              <ul className="flex flex-wrap gap-2">
+                {p.tech.map((t) => (
+                  <li
+                    key={t}
+                    className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-slate-300"
+                  >
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <span className="font-mono text-[11px] text-slate-500">
+                Tecnologias a definir
+              </span>
+            )}
+            {p.url ? (
               <a
-                href={projeto.url}
+                href={p.url}
                 target="_blank"
                 rel="noreferrer"
-                data-testid={`project-dialog-link-${projeto.id}`}
+                data-testid={`project-dialog-link-${p.id}`}
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-light hover:underline"
               >
                 Ver projeto <ArrowUpRight size={15} />
@@ -258,7 +283,7 @@ const ProjectCard = ({ projeto, index }) => {
               <a
                 href="#"
                 onClick={handleEmptyLink}
-                data-testid={`project-dialog-link-${projeto.id}`}
+                data-testid={`project-dialog-link-${p.id}`}
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500"
               >
                 Link em breve
@@ -267,7 +292,7 @@ const ProjectCard = ({ projeto, index }) => {
           </div>
         </DialogContent>
       </Dialog>
-    </>
+    </article>
   );
 };
 
@@ -277,34 +302,38 @@ export const Projects = () => (
     data-testid="projects-section"
     className="relative border-t border-line py-24 md:py-32"
   >
-    <div className="mx-auto grid max-w-6xl gap-14 px-6 md:px-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
-      {/* Título sticky */}
-      <div className="lg:sticky lg:top-28 lg:self-start">
-        <SectionTag>Portfólio</SectionTag>
-        <Reveal delay={0.08}>
-          <h2 className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-7xl">
-            Projetos<span className="text-accent-light">.</span>
-          </h2>
-        </Reveal>
+    <div className="mx-auto max-w-6xl px-6 md:px-10">
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <SectionTag>Portfólio</SectionTag>
+          <Reveal delay={0.08}>
+            <h2 className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-7xl">
+              Projetos<span className="text-accent-light">.</span>
+            </h2>
+          </Reveal>
+        </div>
         <Reveal delay={0.16}>
-          <p className="mt-6 max-w-sm text-base leading-relaxed text-slate-400">
-            Produtos reais construídos de ponta a ponta — do planejamento ao deploy,
-            web e mobile.
-          </p>
-        </Reveal>
-        <Reveal delay={0.22}>
-          <p className="mt-10 font-mono text-sm text-slate-500">
-            <span className="text-2xl font-semibold text-accent-light">0{projetos.length}</span>{" "}
-            / produtos em destaque
+          <p className="max-w-sm text-sm leading-relaxed text-slate-400 md:text-base">
+            Produtos reais construídos de ponta a ponta — do planejamento ao
+            deploy, web e mobile.
           </p>
         </Reveal>
       </div>
 
-      <div className="flex flex-col gap-10">
+      <div className="mt-20 space-y-24 md:space-y-32 lg:mt-28 lg:space-y-40">
         {projetos.map((p, i) => (
-          <ProjectCard key={p.id} projeto={p} index={i} />
+          <ProjectRow key={p.id} p={p} i={i} flip={i % 2 === 1} />
         ))}
       </div>
+
+      <Reveal delay={0.1}>
+        <p className="mt-16 font-mono text-sm text-slate-500">
+          <span className="text-2xl font-semibold text-accent-light">
+            0{projetos.length}
+          </span>{" "}
+          / produtos em destaque
+        </p>
+      </Reveal>
     </div>
   </section>
 );

@@ -25,7 +25,7 @@ Criar um portfólio pessoal premium, moderno e altamente profissional para o des
 2. Hero kinetic: reveal mascarado linha a linha, canvas interativo, badge "Disponível", CTAs, GitHub/LinkedIn
 3. Marquee editorial lento
 4. Sobre: foto tratada (spotlight + parallax sutil), bio objetiva, 4 indicadores
-5. Projetos (seção principal): sticky title + cards com tilt 3D, glow que segue cursor, visual abstrato reservado para screenshots, tags, "Ver projeto" (toast orientando config quando vazio) e "Detalhes" (modal com destaques)
+5. Projetos (seção principal): layout editorial alternado para 2 projetos — Vagas Tapajós (destaque, screenshots reais web + app Android) e Tapajós Combat (Em desenvolvimento, placeholder de screenshot); "Ver projeto" (toast quando vazio) e "Detalhes" (modal)
 6. Tecnologias: grid interativo de 11 techs + célula CTA (sem barras de %)
 7. Forma de trabalhar: Entender → Planejar → Construir → Testar → Evoluir
 8. Contato: título forte, texto, CTA, LinkedIn/GitHub/E-mail configuráveis
@@ -41,5 +41,5 @@ Criar um portfólio pessoal premium, moderno e altamente profissional para o des
 
 ## Backlog
 - P0: preencher links reais (GitHub, LinkedIn, e-mail, URLs dos projetos) em `src/config/site.js`
-- P1: substituir áreas reservadas por screenshots reais dos 3 projetos; og:image 1200×630 + canonical/sitemap quando houver domínio próprio
+- P1: screenshot real do Tapajós Combat + tecnologias confirmadas do Combat; og:image 1200×630 + canonical/sitemap quando houver domínio próprio
 - P2: versão EN/PT, download de CV em PDF

@@ -4,7 +4,7 @@ Portfólio pessoal de Kauã Moreira, desenvolvedor de software brasileiro que co
 
 ## O que o site mostra
 
-- **Projetos**: Vagas Tapajós (plataforma regional de empregos com web e app Android), Norte Gestão (sistema de gestão com dashboard) e VitrineZap (catálogo digital para vendas via WhatsApp).
+- **Projetos**: Vagas Tapajós (plataforma regional de empregos com web e app Android) e Tapajós Combat (plataforma para competições e eventos de esportes de combate, em desenvolvimento).
 - **Tecnologias**: Java, JavaScript, TypeScript, React, Node.js, Supabase, Git, GitHub, Vite, Android e Capacitor.
 - **Forma de trabalho**: Entender, Planejar, Construir, Testar, Evoluir.
 - **Contato**: seção para oportunidades profissionais, projetos e conversas sobre tecnologia.

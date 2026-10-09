@@ -28,7 +28,9 @@ export const projetos = [
     subtitulo: "Plataforma Regional de Empregos",
     descricao:
       "Plataforma regional de empregos conectando candidatos e empresas, com autenticação, vagas, candidaturas, favoritos, notificações, chat e aplicativo Android.",
-    destaques: [
+    status: "Web & Android",
+    destaque: true,
+    funcionalidades: [
       "Autenticação de candidatos e empresas",
       "Publicação e busca de vagas",
       "Candidaturas e favoritos",
@@ -36,34 +38,30 @@ export const projetos = [
       "Aplicativo Android via Capacitor",
     ],
     tech: ["React", "TypeScript", "Supabase", "Capacitor", "Vite"],
+    imagens: {
+      web: "/images/vagas-login.png",
+      appHome: "/images/vagas-home.png",
+      appChat: "/images/vagas-chat.png",
+    },
     url: "",
   },
   {
-    id: "norte-gestao",
-    titulo: "Norte Gestão",
-    subtitulo: "Sistema de Gestão & Dashboard",
+    id: "tapajos-combat",
+    titulo: "Tapajós Combat",
+    subtitulo: "Competições & Eventos de Combate",
     descricao:
-      "Sistema de gestão com dashboard moderno desenvolvido para centralizar informações e tornar operações mais organizadas e eficientes.",
-    destaques: [
-      "Dashboard moderno e centralizado",
-      "Informações da operação em um só lugar",
-      "Processos mais organizados e eficientes",
+      "Plataforma digital voltada para competições e eventos de esportes de combate, com foco na organização de eventos, atletas, categorias, lutas e brackets.",
+    status: "Em desenvolvimento",
+    destaque: false,
+    funcionalidades: [
+      "Organização de eventos",
+      "Gestão de atletas",
+      "Categorias de competição",
+      "Lutas e brackets",
     ],
-    tech: ["React", "TypeScript", "Supabase"],
-    url: "",
-  },
-  {
-    id: "vitrinezap",
-    titulo: "VitrineZap",
-    subtitulo: "Catálogo Digital para WhatsApp",
-    descricao:
-      "Catálogo digital focado em vendas pelo WhatsApp, permitindo visualizar produtos, adicionar itens ao carrinho e gerar pedidos de forma simples.",
-    destaques: [
-      "Catálogo digital de produtos",
-      "Carrinho de itens",
-      "Pedidos gerados direto para o WhatsApp",
-    ],
-    tech: ["React", "TypeScript", "Vite"],
+    // Preencha as tecnologias quando confirmadas. Ex.: ["React", "TypeScript"]
+    tech: [],
+    imagens: {},
     url: "",
   },
 ];
