@@ -1,0 +1,14 @@
+# Kauã Moreira — Software Developer
+
+Portfólio pessoal de Kauã Moreira, desenvolvedor de software brasileiro que constrói sistemas e produtos digitais reais — da arquitetura ao deploy.
+
+## O que o site mostra
+
+- **Projetos**: Vagas Tapajós (plataforma regional de empregos com web e app Android), Norte Gestão (sistema de gestão com dashboard) e VitrineZap (catálogo digital para vendas via WhatsApp).
+- **Tecnologias**: Java, JavaScript, TypeScript, React, Node.js, Supabase, Git, GitHub, Vite, Android e Capacitor.
+- **Forma de trabalho**: Entender, Planejar, Construir, Testar, Evoluir.
+- **Contato**: seção para oportunidades profissionais, projetos e conversas sobre tecnologia.
+
+## Páginas
+
+- `/` — portfólio completo (hero, sobre, projetos, tecnologias, forma de trabalhar, contato).

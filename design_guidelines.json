@@ -1,0 +1,196 @@
+{
+  "project_title": "Kauã Moreira - Premium Personal Portfolio",
+  "archetype": "ARCHETYPE 7 / SWISS & HIGH-CONTRAST DIGITAL PRODUCT DEVELOPER",
+  "theme": "Dark Mode Premium Void (Deep Navy Slate #0B0E14, Electric Blue Accent #2563EB / #3B82F6 / #00D2FF)",
+  "language": "pt-BR (Portuguese)",
+  "target_audience": "Tech Recruiters, Product Managers, Engineering Leads, Clients looking for a real product builder software engineer",
+  "emotional_tone": "High precision, sleek, confident, modern, authoritative product engineer",
+  "color_palette": {
+    "background_base": "#0B0E17",
+    "background_card": "#111625",
+    "background_card_hover": "#161D30",
+    "background_elevated": "#1A2238",
+    "border_subtle": "rgba(255, 255, 255, 0.08)",
+    "border_glow": "rgba(59, 130, 246, 0.4)",
+    "electric_blue_primary": "#2563EB",
+    "electric_blue_light": "#3B82F6",
+    "electric_cyan": "#00D2FF",
+    "text_primary": "#F8FAFC",
+    "text_secondary": "#94A3B8",
+    "text_muted": "#64748B",
+    "accent_glow": "0 0 25px rgba(37, 99, 235, 0.35)",
+    "accent_linear_gradient": "linear-gradient(135deg, #2563EB 0%, #00D2FF 100%)"
+  },
+  "typography": {
+    "headline_font": "Outfit / Space Grotesk / Syne (sans-serif with bold tech character)",
+    "body_font": "Plus Jakarta Sans / Inter (clean legibility)",
+    "code_font": "JetBrains Mono / Fira Code (technical metadata)",
+    "hierarchy": {
+      "h1_hero": "text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none",
+      "h2_section": "text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight",
+      "h3_card": "text-xl sm:text-2xl font-semibold",
+      "eyebrow_mono": "font-mono text-xs uppercase tracking-[0.25em] text-blue-400",
+      "body": "text-base sm:text-lg text-slate-300 leading-relaxed",
+      "body_sm": "text-sm text-slate-400"
+    }
+  },
+  "layout_architecture": {
+    "type": "Single-Page Scrollytelling Portfolio with Sticky Sections and Responsive Bento Grids",
+    "sections": [
+      {
+        "id": "navbar",
+        "name": "Floating Glass Navbar",
+        "type": "fixed top-4 inset-x-0 z-50 flex justify-center px-4",
+        "description": "Minimalist floating container with backdrop-blur-xl bg-[#0B0E17]/80 border border-white/10 rounded-full px-6 py-3 transition-all duration-300",
+        "elements": [
+          "Logo: 'Kauã Moreira' with animated blue glow indicator dot",
+          "Nav Links: Início, Sobre, Projetos, Tecnologias, Contato",
+          "CTA Button: 'Vamos conversar' (Electric Blue Pill button with micro-glow on hover)",
+          "Mobile drawer / menu for small viewports"
+        ]
+      },
+      {
+        "id": "hero",
+        "name": "Kinetic Hero Section",
+        "type": "min-h-[90vh] relative flex flex-col justify-center items-start pt-28 pb-16 overflow-hidden",
+        "description": "Interactive abstract background grid with mouse-following particle vector mesh. Masked line-by-line reveal animation.",
+        "elements": [
+          "Eyebrow: 'SOFWARE DEVELOPER & PRODUCT BUILDER' in mono blue uppercase",
+          "Headline H1: 'Kauã Moreira' + 'Desenvolvo sistemas e produtos digitais transformando problemas reais em soluções simples, funcionais e escaláveis.'",
+          "Badge: 'Disponível para novos projetos' with pulsating green/blue active dot",
+          "CTAs: 'Ver projetos' (Primary blue filled with hover scale) and 'Entrar em contato' (Secondary glass stroke button)",
+          "Social Links: GitHub, LinkedIn icons with hover line fill",
+          "Abstract interactive geometric background canvas reacting smoothly to mouse move"
+        ]
+      },
+      {
+        "id": "about",
+        "name": "Sobre mim & Impact Indicators",
+        "type": "py-24 border-t border-white/5 relative",
+        "description": "2-column layout. Left side photo of Kauã (in cap/workspace with blue LED ambiance) inside a clipped futuristic frame. Right side biography & 4 core skill indicators.",
+        "content_details": {
+          "bio": "Cursa Análise e Desenvolvimento de Sistemas. Desenvolve aplicações reais e produtos digitais completos, combinando arquitetura limpa com UX intuitiva para resolver problemas do mundo real.",
+          "indicators": [
+            {"title": "Software Development", "desc": "Construção de arquiteturas robustas e escaláveis"},
+            {"title": "Product Building", "desc": "Visão de produto da ideia ao deploy final"},
+            {"title": "Web Applications", "desc": "Interfaces reativas de altíssimo desempenho com React & TS"},
+            {"title": "Mobile Applications", "desc": "Apps nativos e híbridos com Capacitor e Android"}
+          ]
+        }
+      },
+      {
+        "id": "projects",
+        "name": "Projetos em Destaque (Sticky Section)",
+        "type": "py-28 relative border-t border-white/5",
+        "description": "Sticky left title column ('Projetos / Selected Works') on desktop while right column showcases large 3D tilt interactive project cards.",
+        "projects_list": [
+          {
+            "title": "Vagas Tapajós",
+            "subtitle": "Plataforma Regional de Empregos",
+            "description": "Plataforma regional de empregos conectando candidatos e empresas, com autenticação, vagas, candidaturas, favoritos, notificações, chat e aplicativo Android.",
+            "tech_stack": ["React", "TypeScript", "Supabase", "Capacitor", "Vite"],
+            "image": "https://images.unsplash.com/photo-1767449356630-c60094b1d1b4?crop=entropy&cs=srgb&fm=jpg&q=85",
+            "highlight": "Multi-platform Job Ecosystem"
+          },
+          {
+            "title": "Norte Gestão",
+            "subtitle": "Sistema de Gestão & Analytics",
+            "description": "Sistema de gestão com dashboard moderno para centralizar informações operacionais e tornar processos de empresas mais organizados, rápidos e eficientes.",
+            "tech_stack": ["React", "TypeScript", "Supabase", "Tailwind CSS"],
+            "image": "https://images.unsplash.com/photo-1720135885007-454165745e21?crop=entropy&cs=srgb&fm=jpg&q=85",
+            "highlight": "Operational Intelligence"
+          },
+          {
+            "title": "VitrineZap",
+            "subtitle": "Catálogo Digital & Vendas WhatsApp",
+            "description": "Catálogo digital focado em conversão de vendas diretamente via WhatsApp, suporte a visualização de produtos, carrinho reativo e geração automática de pedidos.",
+            "tech_stack": ["React", "TypeScript", "Vite", "Tailwind"],
+            "image": "https://images.unsplash.com/photo-1706700392642-dee59f678a09?crop=entropy&cs=srgb&fm=jpg&q=85",
+            "highlight": "E-Commerce Micro-SaaS"
+          }
+        ]
+      },
+      {
+        "id": "technologies",
+        "name": "Stack Tecnológico Interativo",
+        "type": "py-24 border-t border-white/5 relative",
+        "description": "Grid interativo de tecnologias com badges responsivas e microinterações de iluminação ao passar o mouse. Sem barras de porcentagem genéricas.",
+        "stack_items": [
+          {"name": "Java", "category": "Backend & Core", "icon": "Code2"},
+          {"name": "JavaScript", "category": "Frontend & Scripting", "icon": "FileCode"},
+          {"name": "TypeScript", "category": "Type-Safe Architecture", "icon": "FileCheck"},
+          {"name": "React", "category": "UI Library", "icon": "Atom"},
+          {"name": "Node.js", "category": "Backend Runtime", "icon": "Server"},
+          {"name": "Supabase", "category": "Database & Auth", "icon": "Database"},
+          {"name": "Git", "category": "Version Control", "icon": "GitBranch"},
+          {"name": "GitHub", "category": "DevOps & CI/CD", "icon": "Github"},
+          {"name": "Vite", "category": "Build Tool", "icon": "Zap"},
+          {"name": "Android", "category": "Mobile OS", "icon": "Smartphone"},
+          {"name": "Capacitor", "category": "Cross-Platform Mobile", "icon": "Layers"}
+        ]
+      },
+      {
+        "id": "process",
+        "name": "Forma de Trabalhar (Workflow)",
+        "type": "py-24 border-t border-white/5 relative",
+        "description": "5-stage visual roadmap step sequence with connected lines, hover active glowing steps, and clean minimalist card containers.",
+        "steps": [
+          {"step": "01", "name": "Entender", "desc": "Mapeamento profundo do problema, objetivos de negócio e necessidades dos usuários."},
+          {"step": "02", "name": "Planejar", "desc": "Definição de arquitetura, stack ideal, modelo de dados e prototipagem do produto."},
+          {"step": "03", "name": "Construir", "desc": "Desenvolvimento com código limpo, componentes reutilizáveis e performance extrema."},
+          {"step": "04", "name": "Testar", "desc": "Validação rigorosa de usabilidade, estabilidade, integração e responsividade."},
+          {"step": "05", "name": "Evoluir", "desc": "Iterações contínuas baseadas em feedback real, melhorias técnicas e novos recursos."}
+        ]
+      },
+      {
+        "id": "contact",
+        "name": "Contato & Call To Action",
+        "type": "py-28 relative border-t border-white/5 bg-gradient-to-b from-transparent to-[#070A10]",
+        "description": "High impact banner block with blue radial backdrop glow, quick contact form modal / drawer trigger, and direct social buttons.",
+        "content": {
+          "title": "Tem uma ideia ou oportunidade?",
+          "subtitle": "Estou aberto a projetos, oportunidades profissionais e boas conversas sobre tecnologia.",
+          "cta": "Vamos conversar",
+          "email_placeholder": "kaua.moreira.dev@example.com",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com"
+        }
+      },
+      {
+        "id": "footer",
+        "name": "Minimalist Footer",
+        "type": "py-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500",
+        "description": "Displays Kauã Moreira, Software Developer, auto current year, and quick back-to-top button."
+      }
+    ]
+  },
+  "interactive_enhancements": {
+    "custom_cursor": "Sleek magnetic dot cursor with outer ring expansion on interactive items (disabled on touch devices)",
+    "smooth_scroll": "Lenis smooth scroll or native scroll-behavior smooth",
+    "framer_motion_reveals": "Staggered fade-up entrances for text paragraphs and grid items",
+    "3d_hover_cards": "Framer motion transform perspective on hover for project cards",
+    "background_canvas": "HTML5 Canvas geometric grid / interactive particle web reacting gently to mouse moves",
+    "prefers_reduced_motion": "All motion hooks wrapped with accessibility checks to honor system settings"
+  },
+  "image_urls": {
+    "developer_workspace": "https://images.unsplash.com/photo-1753998943918-dd2dfc4ee6ed?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "developer_coding": "https://images.unsplash.com/photo-1753998941587-5befe71f4572?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "vagas_tapajos_mockup": "https://images.unsplash.com/photo-1767449356630-c60094b1d1b4?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "norte_gestao_mockup": "https://images.unsplash.com/photo-1720135885007-454165745e21?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "vitrinezap_mockup": "https://images.unsplash.com/photo-1706700392642-dee59f678a09?crop=entropy&cs=srgb&fm=jpg&q=85"
+  },
+  "instructions_to_main_agent": [
+    "Ensure the page strictly delivers an Awwwards-level dark theme experience using #0B0E17 as the main background.",
+    "Use Electric Blue (#2563EB) and Electric Cyan (#00D2FF) for highlights, borders, and interactive states.",
+    "Ensure all interactive buttons, links, inputs, and cards include `data-testid` attributes (e.g., data-testid='nav-link-sobre', data-testid='project-card-vagas-tapajos').",
+    "Implement full Portuguese text exactly as defined in the user prompt.",
+    "Ensure mobile responsiveness is flawless: stack grid columns, hide custom cursor on touch, preserve touch button targets.",
+    "Include project detail modals or expanders for 'Detalhes' clicks on project cards to present full feature breakdowns."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "data_testid_requirement": "All buttons, navigation links, tech cards, project cards, social links, and form inputs MUST include explicit data-testid attributes in kebab-case format.",
+    "no_transparent_overlays_rule": "Header and sticky bars must have backdrop-blur with opaque or semi-opaque dark tint (#0B0E17 with 80% opacity minimum) to avoid overlapping text unreadability.",
+    "no_universal_transition": "Do not apply transition: all globally. Apply targeted CSS transitions to color, background-color, border-color, and opacity only.",
+    "typography_rules": "Headings must use tight letter spacing (tracking-tight) and mono overlines must use tracking-[0.25em]."
+  }
+}
