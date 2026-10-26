@@ -6,11 +6,10 @@ import { LangProvider } from "@/i18n";
 import { Cursor } from "@/components/Cursor";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { Marquee } from "@/components/Marquee";
-import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
+import { About } from "@/components/About";
 import { Tech } from "@/components/Tech";
-import { Process } from "@/components/Process";
+import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -62,11 +61,10 @@ function App() {
           <Navbar />
           <main id="conteudo">
             <Hero />
-            <Marquee />
-            <About />
             <Projects />
+            <About />
             <Tech />
-            <Process />
+            <Experience />
             <Contact />
           </main>
           <Footer />

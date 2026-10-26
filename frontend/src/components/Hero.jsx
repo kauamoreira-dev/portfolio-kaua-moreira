@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Github, Instagram, Linkedin } from "lucide-react";
+import { ArrowDown, Download, Github, Instagram, Linkedin } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useLang } from "@/i18n";
 import { handleEmptyLink } from "@/lib/links";
@@ -31,11 +31,17 @@ const FadeIn = ({ children, delay = 0, y = 18 }) => (
 );
 
 export const Hero = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
   const yContent = useTransform(scrollY, [0, 620], [0, reduce ? 0 : 90]);
   const opacity = useTransform(scrollY, [0, 560], [1, reduce ? 1 : 0.2]);
+
+  const socials = [
+    { id: "github", url: siteConfig.social.github, Icone: Github, label: "GitHub" },
+    { id: "linkedin", url: siteConfig.social.linkedin, Icone: Linkedin, label: "LinkedIn" },
+    { id: "instagram", url: siteConfig.social.instagram, Icone: Instagram, label: "Instagram" },
+  ].filter((s) => s.url);
 
   return (
     <section
@@ -59,7 +65,7 @@ export const Hero = () => {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
             </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-300">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-slate-300">
               {t.hero.badge}
             </span>
           </div>
@@ -80,6 +86,9 @@ export const Hero = () => {
           <p className="mt-6 font-mono text-xs uppercase tracking-[0.3em] text-accent-light md:text-sm">
             {t.hero.papel}
           </p>
+          <p className="mt-2 font-mono text-xs tracking-[0.14em] text-slate-400 md:text-sm" data-testid="hero-stack-line">
+            {siteConfig.stack}
+          </p>
         </FadeIn>
 
         <FadeIn delay={0.68}>
@@ -95,19 +104,22 @@ export const Hero = () => {
               data-testid="hero-cta-projects"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light hover:shadow-[0_0_36px_rgba(37,99,235,0.45)] md:text-base"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-light md:text-base"
             >
               {t.hero.ctaProjetos}
               <ArrowDown size={16} className="transition-transform duration-300 group-hover:translate-y-0.5" />
             </motion.a>
             <motion.a
-              href="#contato"
-              data-testid="hero-cta-contact"
+              href={siteConfig.resume[lang]}
+              target="_blank"
+              rel="noreferrer"
+              data-testid="hero-cta-resume"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 text-sm font-semibold text-slate-200 transition-colors duration-200 hover:border-white/30 hover:bg-white/5 md:text-base"
             >
-              {t.hero.ctaContato}
+              {t.hero.ctaResume}
+              <Download size={16} />
             </motion.a>
           </div>
         </FadeIn>
@@ -115,28 +127,30 @@ export const Hero = () => {
         <FadeIn delay={0.95}>
           <div className="mt-12 flex items-center gap-5">
             <span className="h-px w-10 bg-line" aria-hidden="true" />
-            {[
-              { id: "github", url: siteConfig.social.github, Icone: Github, label: "GitHub" },
-              { id: "linkedin", url: siteConfig.social.linkedin, Icone: Linkedin, label: "LinkedIn" },
-              { id: "instagram", url: siteConfig.social.instagram, Icone: Instagram, label: "Instagram" },
-            ]
-              .filter((s) => s.url)
-              .map((s) => (
-                <a
-                  key={s.id}
-                  href={s.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-testid={`hero-social-${s.id}`}
-                  aria-label={`${s.label} de Kauã Moreira`}
-                  className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-400 transition-colors duration-200 hover:text-accent-light"
-                >
-                  <s.Icone size={16} /> {s.label}
-                </a>
-              ))}
-            <span className="hidden items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500 md:inline-flex">
-              <ArrowUpRight size={14} className="text-accent-light" /> {siteConfig.papel}
-            </span>
+            {socials.map((s) => (
+              <a
+                key={s.id}
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                data-testid={`hero-social-${s.id}`}
+                aria-label={`${s.label} de Kauã Moreira`}
+                className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-400 transition-colors duration-200 hover:text-accent-light"
+              >
+                <s.Icone size={16} /> {s.label}
+              </a>
+            ))}
+            {!siteConfig.social.github && (
+              <a
+                href="#"
+                onClick={handleEmptyLink}
+                data-testid="hero-social-github"
+                aria-label="GitHub de Kauã Moreira (link não configurado)"
+                className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-slate-400 transition-colors duration-200 hover:text-accent-light"
+              >
+                <Github size={16} /> GitHub
+              </a>
+            )}
           </div>
         </FadeIn>
       </motion.div>

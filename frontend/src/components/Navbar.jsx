@@ -73,7 +73,7 @@ export const Navbar = () => {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-6 lg:flex" aria-label="Navegação principal">
             {t.nav.links.map((l) => (
               <a
                 key={l.id}
@@ -145,7 +145,7 @@ export const Navbar = () => {
               </button>
             </div>
 
-            <nav className="mt-12 flex flex-col gap-2" aria-label="Menu móvel">
+            <nav className="mt-10 flex flex-col gap-1" aria-label="Menu móvel">
               {t.nav.links.map((l, i) => (
                 <motion.a
                   key={l.id}
@@ -154,8 +154,8 @@ export const Navbar = () => {
                   onClick={() => setOpen(false)}
                   initial={{ opacity: 0, x: -24 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.08 + i * 0.06, duration: 0.4 }}
-                  className="flex items-baseline gap-4 border-b border-line py-4 font-display text-3xl font-bold text-white"
+                  transition={{ delay: 0.06 + i * 0.05, duration: 0.4 }}
+                  className="flex items-baseline gap-4 border-b border-line py-3.5 font-display text-2xl font-bold text-white"
                 >
                   <span className="font-mono text-xs text-accent-light">0{i + 1}</span>
                   {l.label}
@@ -164,14 +164,14 @@ export const Navbar = () => {
             </nav>
 
             <div className="mt-auto flex items-center justify-between gap-4 pt-6">
-              <LangToggle />
+              <LangToggle testPrefix="nav-lang-toggle" />
               <motion.a
                 href="#contato"
                 data-testid="nav-mobile-cta-button"
                 onClick={() => setOpen(false)}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.45, duration: 0.4 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
                 className="flex-1 rounded-full bg-accent py-4 text-center text-sm font-semibold text-white"
               >
                 {t.nav.cta}

@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Github, Instagram, Mail, MessageCircle } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import { siteConfig } from "@/config/site";
 import { useLang } from "@/i18n";
-import { handleEmptyLink } from "@/lib/links";
-
-const icones = { linkedin: Linkedin, github: Github, instagram: Instagram, whatsapp: MessageCircle, email: Mail };
 
 export const Contact = () => {
   const { t } = useLang();
 
-  const canais = [
-    { id: "linkedin", url: siteConfig.social.linkedin },
-    { id: "github", url: siteConfig.social.github },
-    { id: "instagram", url: siteConfig.social.instagram },
-    { id: "whatsapp", url: siteConfig.whatsapp },
-    { id: "email", url: siteConfig.email ? `mailto:${siteConfig.email}` : "" },
-  ].filter((c) => c.url);
+  const principais = [
+    { id: "linkedin", url: siteConfig.social.linkedin, label: t.contato.canais.linkedin, interno: false },
+    { id: "github", url: siteConfig.social.github, label: t.contato.canais.github, interno: false },
+    { id: "email", url: siteConfig.email ? `mailto:${siteConfig.email}` : "", label: t.contato.canais.email, interno: true },
+  ];
+
+  const secundarios = [
+    { id: "instagram", url: siteConfig.social.instagram, label: t.contato.canais.instagram, Icone: Instagram },
+    { id: "whatsapp", url: siteConfig.whatsapp, label: t.contato.canais.whatsapp, Icone: MessageCircle },
+  ];
 
   return (
     <section
@@ -36,8 +36,7 @@ export const Contact = () => {
 
         <Reveal delay={0.1}>
           <h2 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
-            {t.contato.tituloA}{" "}
-            <span className="text-accent-light">{t.contato.tituloB}</span>
+            {t.contato.titulo}
           </h2>
         </Reveal>
 
@@ -50,7 +49,6 @@ export const Contact = () => {
         <Reveal delay={0.3}>
           <motion.a
             href={siteConfig.email ? `mailto:${siteConfig.email}` : "#"}
-            onClick={siteConfig.email ? undefined : handleEmptyLink}
             data-testid="contact-cta"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
@@ -63,23 +61,35 @@ export const Contact = () => {
 
         <Reveal delay={0.4}>
           <div className="mt-14 flex flex-wrap items-center justify-center gap-3">
-            {canais.map((c) => {
-              const Icone = icones[c.id];
-              return (
+            {principais
+              .filter((c) => c.url)
+              .map((c) => (
                 <a
                   key={c.id}
-                  href={c.url || "#"}
-                  onClick={c.url ? undefined : handleEmptyLink}
-                  target={c.url && !c.url.startsWith("mailto:") ? "_blank" : undefined}
+                  href={c.url}
+                  target={c.interno ? undefined : "_blank"}
                   rel="noreferrer"
                   data-testid={`contact-link-${c.id}`}
                   className="inline-flex items-center gap-2.5 rounded-full border border-line px-6 py-3 font-mono text-xs uppercase tracking-[0.16em] text-slate-300 transition-[border-color,color,background-color] duration-200 hover:border-accent-light/50 hover:bg-accent/[0.07] hover:text-accent-light"
                 >
-                  <Icone size={15} />
-                  {t.contato.canais[c.id]}
+                  {c.label}
                 </a>
-              );
-            })}
+              ))}
+          </div>
+          <div className="mt-6 flex items-center justify-center gap-5">
+            {secundarios.map((s) => (
+              <a
+                key={s.id}
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                data-testid={`contact-secondary-${s.id}`}
+                className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500 transition-colors duration-200 hover:text-accent-light"
+              >
+                <s.Icone size={13} />
+                {s.label}
+              </a>
+            ))}
           </div>
         </Reveal>
       </div>

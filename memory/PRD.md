@@ -41,6 +41,7 @@ Criar um portfólio pessoal premium, moderno e altamente profissional para o des
 
 ## Backlog
 - P0: preencher GitHub em `src/config/site.js` (e-mail, LinkedIn, Instagram e WhatsApp já configurados com dados reais)
+- P1: currículo oficial em PDF assinado pelo Kauã (hoje: páginas estáticas print-to-PDF com dados reais)
 - P1: tecnologias confirmadas do Tapajós Combat; og:image 1200×630 + canonical/sitemap quando houver domínio próprio
 - P2: download de CV em PDF
 
@@ -48,3 +49,4 @@ Criar um portfólio pessoal premium, moderno e altamente profissional para o des
 - 2026-10-09 (b): Projetos redesenhados para 2 projetos em layout editorial alternado; Vagas Tapajós com screenshots reais (web + app) e url https://vagastapajos.com.br; Tapajós Combat com mockup + logo reais e status "Em desenvolvimento"
 - 2026-10-09 (c): alternância PT/EN completa (contexto React, persistência em localStorage, html lang e document.title dinâmicos)
 - 2026-10-09 (d): textos finais dos projetos — Vagas "Projeto ativo" + descrição curta + 7 funcionalidades; Combat com novas descrição e tecnologias (React, TypeScript, Vite, Supabase); sem novas seções
+- 2026-10-09 (e): EVOLUÇÃO PROFESSIONAL — reposicionamento para "Frontend Developer · React • JavaScript • TypeScript"; disponibilidade "Brazil / Worldwide" no badge; Tapajós Combat 100% removido (código, imagens, SEO, bundle grep = 0); Vagas Tapajós como case study com modal (contexto, desafio, features, stack & decisões, galeria); seções Marquee e Processo removidas; nova Tech Stack agrupada (Frontend / Backend·Data / Tools); nova seção Experiência & Formação; currículos estáticos /curriculo.html (PT) e /resume.html (EN) com print-to-PDF; SEO completo com domínio vercel (canonical, og:url, og-image gerada, sitemap.xml, llms.txt atualizado); contato com CTA "Vamos trabalhar juntos" + LinkedIn/GitHub/E-mail e secundários Instagram/WhatsApp

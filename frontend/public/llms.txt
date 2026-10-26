@@ -1,14 +1,19 @@
-# Kauã Moreira — Software Developer
+# Kauã Moreira — Frontend Developer
 
-Portfólio pessoal de Kauã Moreira, desenvolvedor de software brasileiro que constrói sistemas e produtos digitais reais — da arquitetura ao deploy.
+Portfólio de Kauã Moreira, desenvolvedor front-end brasileiro focado em React, JavaScript e TypeScript. Constrói interfaces e aplicações web para problemas reais. Disponível para oportunidades remotas (Brasil e mundial).
 
 ## O que o site mostra
 
-- **Projetos**: Vagas Tapajós (plataforma regional de empregos com web e app Android) e Tapajós Combat (plataforma para competições e eventos de esportes de combate, em desenvolvimento).
-- **Tecnologias**: Java, JavaScript, TypeScript, React, Node.js, Supabase, Git, GitHub, Vite, Android e Capacitor.
-- **Forma de trabalho**: Entender, Planejar, Construir, Testar, Evoluir.
-- **Contato**: seção para oportunidades profissionais, projetos e conversas sobre tecnologia.
+- **Projeto em destaque**: Vagas Tapajós — plataforma web regional de empregos que conecta candidatos e empresas, com autenticação, perfis, publicação de vagas, candidaturas e integração com Supabase (vagastapajos.com.br).
+- **Tech Stack**: React, TypeScript, JavaScript, HTML, CSS, Supabase, REST APIs, Git, GitHub, Vite e Vercel.
+- **Experiência**: Frontend Development & Personal Projects (2025 – Presente).
+- **Formação**: Análise e Desenvolvimento de Sistemas na UNAMA – Universidade da Amazônia (cursando o 4º semestre).
+- **Contato**: e-mail, LinkedIn, Instagram e WhatsApp; botão de currículo (PT/EN).
 
 ## Páginas
 
-- `/` — portfólio completo (hero, sobre, projetos, tecnologias, forma de trabalhar, contato).
+- `/` — portfólio completo (hero, projeto em destaque, sobre, tech stack, experiência & formação, contato).
+- `/curriculo.html` — currículo em português, otimizado para impressão em PDF.
+- `/resume.html` — currículo em inglês, otimizado para impressão em PDF.
+
+Idiomas: português e inglês, com alternância no topo do site.

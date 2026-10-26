@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+Sitemap: https://kauamoreira-dev.vercel.app/sitemap.xml
+
 User-agent: Googlebot
 User-agent: Bingbot
 User-agent: GPTBot

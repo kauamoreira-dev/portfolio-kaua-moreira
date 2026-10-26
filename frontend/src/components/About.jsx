@@ -1,10 +1,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useSpring } from "framer-motion";
-import { Code2, Layers, Smartphone, Globe } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import { useLang } from "@/i18n";
-
-const icones = [Code2, Layers, Globe, Smartphone];
 
 export const About = () => {
   const { t } = useLang();
@@ -42,7 +39,7 @@ export const About = () => {
           >
             <motion.img
               src="/images/kaua-portrait.jpeg"
-              alt="Kauã Moreira, desenvolvedor de software, em seu ambiente de trabalho"
+              alt="Kauã Moreira, desenvolvedor front-end, em seu ambiente de trabalho"
               width={848}
               height={1264}
               loading="lazy"
@@ -75,34 +72,16 @@ export const About = () => {
               {t.sobre.p1}
             </p>
           </Reveal>
-          <Reveal delay={0.22}>
+          <Reveal delay={0.2}>
             <p className="mt-4 text-base leading-relaxed text-slate-400 md:text-lg">
               {t.sobre.p2}
             </p>
           </Reveal>
-
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-            {t.sobre.indicadores.map((ind, i) => {
-              const Icone = icones[i] || Code2;
-              return (
-                <Reveal
-                  key={ind.titulo}
-                  delay={0.1 + i * 0.07}
-                  className="group bg-ink p-6 transition-colors duration-300 hover:bg-ink-raise"
-                  data-testid={`about-indicator-${ind.titulo.toLowerCase().replace(/\s+/g, "-")}`}
-                >
-                  <Icone
-                    size={20}
-                    className="text-slate-500 transition-colors duration-300 group-hover:text-accent-light"
-                  />
-                  <h3 className="mt-4 text-sm font-semibold tracking-wide text-white md:text-base">
-                    {ind.titulo}
-                  </h3>
-                  <p className="mt-1.5 text-sm text-slate-500">{ind.desc}</p>
-                </Reveal>
-              );
-            })}
-          </div>
+          <Reveal delay={0.24}>
+            <p className="mt-4 text-base leading-relaxed text-slate-400 md:text-lg">
+              {t.sobre.p3}
+            </p>
+          </Reveal>
         </div>
       </div>
     </section>

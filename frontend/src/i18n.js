@@ -6,124 +6,101 @@ export const dict = {
     nav: {
       links: [
         { id: "inicio", label: "Início" },
+        { id: "projetos", label: "Projeto" },
         { id: "sobre", label: "Sobre" },
-        { id: "projetos", label: "Projetos" },
-        { id: "tecnologias", label: "Tecnologias" },
+        { id: "stack", label: "Stack" },
+        { id: "experiencia", label: "Experiência" },
         { id: "contato", label: "Contato" },
       ],
       cta: "Vamos conversar",
     },
     hero: {
-      badge: "Disponível para novos projetos",
-      papel: "Software Developer",
+      badge: "Disponível para oportunidades remotas · Brasil / Mundo",
+      papel: "Frontend Developer",
       frase:
-        "Desenvolvo sistemas e produtos digitais transformando problemas reais em soluções simples, funcionais e escaláveis.",
-      ctaProjetos: "Ver projetos",
-      ctaContato: "Entrar em contato",
+        "Desenvolvo interfaces e aplicações web modernas, focando em resolver problemas reais através de tecnologia.",
+      ctaProjetos: "Ver projeto",
+      ctaResume: "Baixar currículo",
       scroll: "Scroll",
     },
-    marquee: [
-      "Sistemas reais",
-      "Produtos digitais",
-      "Soluções escaláveis",
-      "Web & Mobile",
-      "Do planejamento ao deploy",
-      "Código limpo",
-    ],
+    projeto: {
+      tag: "Projeto em destaque",
+      status: "Projeto ativo",
+      subtitulo: "Plataforma Regional de Empregos",
+      descricao:
+        "Plataforma web desenvolvida para conectar candidatos e empresas e facilitar a divulgação e busca por oportunidades.",
+      verProjeto: "Ver projeto",
+      caseStudy: "Case Study",
+      featuresTitle: "Principais funcionalidades",
+      features: [
+        "Autenticação de candidatos e empresas",
+        "Perfil de candidato e empresa",
+        "Publicação de vagas",
+        "Candidaturas",
+        "Integração com banco de dados",
+        "Interface responsiva",
+        "Experiência mobile",
+        "Integração com Supabase",
+      ],
+      case: {
+        titulo: "Case Study — Vagas Tapajós",
+        contextoTitulo: "Contexto",
+        contexto:
+          "A Vagas Tapajós é uma plataforma web criada para conectar candidatos e empresas da região do Tapajós, centralizando a divulgação e a busca por oportunidades em um só lugar.",
+        desafioTitulo: "O desafio",
+        desafio:
+          "Criar uma experiência simples para dois públicos — quem busca uma vaga e quem quer contratar — mantendo a plataforma rápida, organizada e fácil de usar no computador e no celular.",
+        buildTitulo: "O que foi construído",
+        stackTitulo: "Stack & decisões",
+        stack: [
+          "React + Vite — base para interfaces rápidas e um projeto bem modularizado",
+          "JavaScript / TypeScript — produtividade com mais segurança nas mudanças de código",
+          "Supabase — autenticação e banco de dados integrados ao front-end",
+          "Design responsivo — a mesma experiência funciona na web e no celular",
+        ],
+        galeriaTitulo: "Galeria",
+        galeria: [
+          "Área do candidato na web",
+          "Lista de vagas no aplicativo",
+          "Chat entre candidato e empresa",
+        ],
+      },
+    },
     sobre: {
       tag: "Sobre mim",
-      titulo: "Do problema real ao produto funcionando.",
-      p1: "Cursando Análise e Desenvolvimento de Sistemas, desenvolvo aplicações reais — da arquitetura ao deploy. Trabalho com desenvolvimento de software e produtos digitais, transformando necessidades em soluções funcionais, simples e escaláveis.",
-      p2: "Estou sempre evoluindo tecnicamente, explorando ferramentas e práticas que tornem cada entrega melhor que a anterior.",
-      indicadores: [
-        { titulo: "Software Development", desc: "Arquiteturas robustas e escaláveis" },
-        { titulo: "Product Building", desc: "Visão de produto da ideia ao deploy" },
-        { titulo: "Web Applications", desc: "Interfaces rápidas e reativas com React e TypeScript" },
-        { titulo: "Mobile Applications", desc: "Apps Android com Capacitor" },
-      ],
-    },
-    projetos: {
-      tag: "Portfólio",
-      titulo: "Projetos",
-      desc: "Produtos reais construídos de ponta a ponta — do planejamento ao deploy, web e mobile.",
-      destaqueLabel: "Projeto em destaque",
-      verProjeto: "Ver projeto",
-      detalhes: "Detalhes",
-      linkEmBreve: "Link em breve",
-      funcTitle: "Principais funcionalidades",
-      devFuncTitle: "Foco do desenvolvimento",
-      techTBD: "Tecnologias a definir",
-      countSuf: "/ produtos em destaque",
-      items: {
-        "vagas-tapajos": {
-          subtitulo: "Plataforma Regional de Empregos",
-          descricao:
-            "Plataforma regional de empregos criada para conectar candidatos e empresas da região do Tapajós.",
-          status: "Projeto ativo",
-          dev: false,
-          funcionalidades: [
-            "Autenticação de candidatos e empresas",
-            "Publicação e gerenciamento de vagas",
-            "Candidaturas",
-            "Favoritos",
-            "Notificações",
-            "Chat",
-            "Aplicativo Android",
-          ],
-        },
-        "tapajos-combat": {
-          subtitulo: "Competições & Eventos de Combate",
-          descricao:
-            "Plataforma digital para organização de competições e eventos de esportes de combate, com foco em atletas, categorias, lutas e brackets.",
-          status: "Em desenvolvimento",
-          dev: true,
-          funcionalidades: [
-            "Organização de eventos",
-            "Gestão de atletas",
-            "Categorias de competição",
-            "Lutas e brackets",
-          ],
-        },
-      },
+      titulo: "Interfaces modernas para problemas reais.",
+      p1: "Sou estudante de Análise e Desenvolvimento de Sistemas e desenvolvedor front-end focado principalmente em React, JavaScript e TypeScript.",
+      p2: "Tenho experiência prática construindo interfaces, sistemas web e aplicações para projetos acadêmicos, autorais e problemas reais.",
+      p3: "Estou buscando oportunidades de estágio ou desenvolvimento front-end júnior, onde possa trabalhar com produtos reais, aprender com outros desenvolvedores e evoluir tecnicamente.",
     },
     tech: {
       tag: "Stack",
-      titulo: "Tecnologias",
-      desc: "Ferramentas que uso para levar produtos do papel à produção.",
-      cta: "Vamos conversar sobre seu projeto",
-      cat: {
-        coffee: "Backend & Core",
-        braces: "Linguagem",
-        filecode: "Tipagem forte",
-        atom: "UI Library",
-        server: "Runtime backend",
-        database: "Database & Auth",
-        gitbranch: "Versionamento",
-        github: "Colaboração",
-        zap: "Build tool",
-        smartphone: "Mobile nativo",
-        layers: "Cross-platform",
-      },
+      titulo: "Tech Stack",
+      desc: "Tecnologias que fazem parte do meu dia a dia de desenvolvimento.",
+      grupos: { frontend: "Frontend", backend: "Backend / Data", tools: "Tools" },
     },
-    processo: {
-      tag: "Processo",
-      titulo: "Forma de trabalhar",
-      desc: "Um processo claro, do primeiro alinhamento às iterações que mantêm o produto vivo.",
-      passos: [
-        { n: "01", nome: "Entender", desc: "Mapear o problema, os objetivos e as necessidades reais de quem vai usar." },
-        { n: "02", nome: "Planejar", desc: "Definir arquitetura, stack e modelo de dados antes de escrever código." },
-        { n: "03", nome: "Construir", desc: "Desenvolver com código limpo, componentes reutilizáveis e performance." },
-        { n: "04", nome: "Testar", desc: "Validar usabilidade, estabilidade e responsividade em cada entrega." },
-        { n: "05", nome: "Evoluir", desc: "Iterar com feedback real, melhorando técnica e continuamente o produto." },
-      ],
+    experiencia: {
+      tag: "Trajetória",
+      titulo: "Experiência & Formação",
+      expLabel: "Experiência",
+      exp: {
+        titulo: "Frontend Development & Personal Projects",
+        periodo: "2025 – Presente",
+        desc: "Desenvolvimento de interfaces, aplicações web e sistemas utilizando React, JavaScript, TypeScript, Supabase, APIs e Git.",
+      },
+      eduLabel: "Formação",
+      edu: {
+        titulo: "Análise e Desenvolvimento de Sistemas",
+        org: "UNAMA – Universidade da Amazônia",
+        periodo: "Cursando o 4º semestre",
+      },
     },
     contato: {
       tag: "Contato",
-      tituloA: "Tem uma ideia ou",
-      tituloB: "oportunidade?",
+      titulo: "Vamos trabalhar juntos.",
       texto:
-        "Estou aberto a projetos, oportunidades profissionais e boas conversas sobre tecnologia.",
-      cta: "Vamos conversar",
+        "Estou aberto a estágios, oportunidades júnior em front-end, projetos e boas conversas sobre tecnologia.",
+      cta: "Vamos trabalhar juntos",
       canais: { linkedin: "LinkedIn", github: "GitHub", instagram: "Instagram", whatsapp: "WhatsApp", email: "E-mail" },
     },
     toast: {
@@ -135,124 +112,101 @@ export const dict = {
     nav: {
       links: [
         { id: "inicio", label: "Home" },
+        { id: "projetos", label: "Project" },
         { id: "sobre", label: "About" },
-        { id: "projetos", label: "Projects" },
-        { id: "tecnologias", label: "Technologies" },
+        { id: "stack", label: "Stack" },
+        { id: "experiencia", label: "Experience" },
         { id: "contato", label: "Contact" },
       ],
       cta: "Let's talk",
     },
     hero: {
-      badge: "Available for new projects",
-      papel: "Software Developer",
+      badge: "Available for Remote Opportunities · Brazil / Worldwide",
+      papel: "Frontend Developer",
       frase:
-        "I build systems and digital products, turning real problems into simple, functional and scalable solutions.",
-      ctaProjetos: "View projects",
-      ctaContato: "Get in touch",
+        "I build modern web interfaces and applications, focused on solving real problems through technology.",
+      ctaProjetos: "View Project",
+      ctaResume: "Download Resume",
       scroll: "Scroll",
     },
-    marquee: [
-      "Real systems",
-      "Digital products",
-      "Scalable solutions",
-      "Web & Mobile",
-      "From planning to deploy",
-      "Clean code",
-    ],
+    projeto: {
+      tag: "Featured Project",
+      status: "Active project",
+      subtitulo: "Regional Job Platform",
+      descricao:
+        "Web platform built to connect candidates and companies, making it easier to post and find job opportunities.",
+      verProjeto: "View Project",
+      caseStudy: "Case Study",
+      featuresTitle: "Key features",
+      features: [
+        "Authentication for candidates and companies",
+        "Candidate and company profiles",
+        "Job posting",
+        "Applications",
+        "Database integration",
+        "Responsive interface",
+        "Mobile experience",
+        "Supabase integration",
+      ],
+      case: {
+        titulo: "Case Study — Vagas Tapajós",
+        contextoTitulo: "Context",
+        contexto:
+          "Vagas Tapajós is a web platform created to connect candidates and companies in the Tapajós region, bringing job posting and job search together in one place.",
+        desafioTitulo: "The challenge",
+        desafio:
+          "Designing a simple experience for two audiences — people looking for a job and companies hiring — while keeping the platform fast, organized and easy to use on desktop and mobile.",
+        buildTitulo: "What was built",
+        stackTitulo: "Stack & decisions",
+        stack: [
+          "React + Vite — a foundation for fast interfaces and a well-structured project",
+          "JavaScript / TypeScript — productivity with safer code changes",
+          "Supabase — authentication and database integrated with the front-end",
+          "Responsive design — the same experience works on the web and on mobile",
+        ],
+        galeriaTitulo: "Gallery",
+        galeria: [
+          "Candidate area on the web",
+          "Job list in the app",
+          "Chat between candidate and company",
+        ],
+      },
+    },
     sobre: {
       tag: "About me",
-      titulo: "From real problem to working product.",
-      p1: "Studying Systems Analysis and Development, I build real applications — from architecture to deploy. I work with software development and digital products, turning needs into functional, simple and scalable solutions.",
-      p2: "I'm always evolving technically, exploring tools and practices that make every delivery better than the last.",
-      indicadores: [
-        { titulo: "Software Development", desc: "Robust, scalable architectures" },
-        { titulo: "Product Building", desc: "Product vision from idea to deploy" },
-        { titulo: "Web Applications", desc: "Fast, reactive interfaces with React and TypeScript" },
-        { titulo: "Mobile Applications", desc: "Android apps with Capacitor" },
-      ],
-    },
-    projetos: {
-      tag: "Portfolio",
-      titulo: "Projects",
-      desc: "Real products built end to end — from planning to deploy, web and mobile.",
-      destaqueLabel: "Featured project",
-      verProjeto: "View project",
-      detalhes: "Details",
-      linkEmBreve: "Link coming soon",
-      funcTitle: "Key features",
-      devFuncTitle: "Development focus",
-      techTBD: "Tech stack to be defined",
-      countSuf: "/ featured products",
-      items: {
-        "vagas-tapajos": {
-          subtitulo: "Regional Job Platform",
-          descricao:
-            "Regional job platform created to connect candidates and companies from the Tapajós region.",
-          status: "Active project",
-          dev: false,
-          funcionalidades: [
-            "Authentication for candidates and companies",
-            "Job posting and management",
-            "Applications",
-            "Favorites",
-            "Notifications",
-            "Chat",
-            "Android app",
-          ],
-        },
-        "tapajos-combat": {
-          subtitulo: "Combat Sports Competitions & Events",
-          descricao:
-            "Digital platform for organizing combat sports competitions and events, focused on athletes, categories, fights and brackets.",
-          status: "In development",
-          dev: true,
-          funcionalidades: [
-            "Event organization",
-            "Athlete management",
-            "Competition categories",
-            "Fights and brackets",
-          ],
-        },
-      },
+      titulo: "Modern interfaces for real problems.",
+      p1: "I'm a Systems Analysis and Development student and a front-end developer focused mainly on React, JavaScript and TypeScript.",
+      p2: "I have hands-on experience building interfaces, web systems and applications for academic projects, personal projects and real problems.",
+      p3: "I'm looking for internship or junior front-end opportunities where I can work on real products, learn from other developers and keep growing technically.",
     },
     tech: {
       tag: "Stack",
-      titulo: "Technologies",
-      desc: "Tools I use to take products from idea to production.",
-      cta: "Let's talk about your project",
-      cat: {
-        coffee: "Backend & Core",
-        braces: "Language",
-        filecode: "Strong typing",
-        atom: "UI Library",
-        server: "Backend runtime",
-        database: "Database & Auth",
-        gitbranch: "Versioning",
-        github: "Collaboration",
-        zap: "Build tool",
-        smartphone: "Native mobile",
-        layers: "Cross-platform",
-      },
+      titulo: "Tech Stack",
+      desc: "Technologies that are part of my day-to-day development.",
+      grupos: { frontend: "Frontend", backend: "Backend / Data", tools: "Tools" },
     },
-    processo: {
-      tag: "Process",
-      titulo: "How I work",
-      desc: "A clear process, from the first alignment to the iterations that keep the product alive.",
-      passos: [
-        { n: "01", nome: "Understand", desc: "Mapping the problem, the goals and the real needs of the people who will use it." },
-        { n: "02", nome: "Plan", desc: "Defining architecture, stack and data model before writing code." },
-        { n: "03", nome: "Build", desc: "Developing with clean code, reusable components and performance." },
-        { n: "04", nome: "Test", desc: "Validating usability, stability and responsiveness in every delivery." },
-        { n: "05", nome: "Evolve", desc: "Iterating with real feedback, continuously improving the product." },
-      ],
+    experiencia: {
+      tag: "Background",
+      titulo: "Experience & Education",
+      expLabel: "Experience",
+      exp: {
+        titulo: "Frontend Development & Personal Projects",
+        periodo: "2025 – Present",
+        desc: "Building interfaces, web applications and systems with React, JavaScript, TypeScript, Supabase, APIs and Git.",
+      },
+      eduLabel: "Education",
+      edu: {
+        titulo: "Systems Analysis and Development",
+        org: "UNAMA – Universidade da Amazônia",
+        periodo: "Currently in the 4th semester",
+      },
     },
     contato: {
       tag: "Contact",
-      tituloA: "Have an idea or",
-      tituloB: "opportunity?",
+      titulo: "Let's work together.",
       texto:
-        "I'm open to projects, professional opportunities and good conversations about technology.",
-      cta: "Let's talk",
+        "I'm open to internships, junior front-end opportunities, projects and good conversations about technology.",
+      cta: "Let's work together",
       canais: { linkedin: "LinkedIn", github: "GitHub", instagram: "Instagram", whatsapp: "WhatsApp", email: "Email" },
     },
     toast: {
@@ -277,8 +231,8 @@ export const LangProvider = ({ children }) => {
     document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
     document.title =
       lang === "en"
-        ? "Kauã Moreira — Software Developer | Portfolio"
-        : "Kauã Moreira — Software Developer | Portfólio";
+        ? "Kauã Moreira | Frontend Developer · React & TypeScript"
+        : "Kauã Moreira | Frontend Developer · React & TypeScript";
     i18nRef.lang = lang;
   }, [lang]);
 
@@ -291,7 +245,7 @@ export const LangProvider = ({ children }) => {
 
 export const useLang = () => useContext(LangContext);
 
-export const LangToggle = ({ className = "" }) => {
+export const LangToggle = ({ className = "", testPrefix = "lang-toggle" }) => {
   const { lang, setLang } = useLang();
   return (
     <div
@@ -303,7 +257,7 @@ export const LangToggle = ({ className = "" }) => {
         <button
           key={l}
           type="button"
-          data-testid={`lang-toggle-${l}`}
+          data-testid={`${testPrefix}-${l}`}
           onClick={() => setLang(l)}
           aria-pressed={lang === l}
           className={`rounded-full px-2.5 py-1 uppercase transition-colors duration-200 ${
