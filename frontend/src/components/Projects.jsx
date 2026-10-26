@@ -176,6 +176,7 @@ export const Projects = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
           data-testid="case-study-dialog"
+          data-lenis-prevent
           className="max-h-[85vh] max-w-4xl overflow-y-auto border-line bg-ink-card text-slate-100"
         >
           <DialogHeader>

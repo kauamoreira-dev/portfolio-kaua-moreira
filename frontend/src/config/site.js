@@ -12,7 +12,7 @@ export const siteConfig = {
   social: {
     github: "https://github.com/kauamoreira-dev",
     linkedin: "https://www.linkedin.com/in/kauamoreira-dev/",
-    instagram: "https://instagram.com/kaua.mcirino",
+    instagram: "https://instagram.com/kauamoreira.dev",
   },
 
   whatsapp: "https://wa.me/5569984299960",
