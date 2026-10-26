@@ -196,16 +196,34 @@ export const Projects = () => {
 
             <div>
               <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent-light">
-                {caseData.desafioTitulo}
+                {caseData.problemaTitulo}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
-                {caseData.desafio}
+                {caseData.problema}
               </p>
             </div>
 
             <div>
               <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent-light">
-                {caseData.buildTitulo}
+                {caseData.solucaoTitulo}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
+                {caseData.solucao}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent-light">
+                {caseData.participacaoTitulo}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
+                {caseData.participacao}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent-light">
+                {labels.featuresTitle}
               </h3>
               <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
                 {labels.features.map((f) => (

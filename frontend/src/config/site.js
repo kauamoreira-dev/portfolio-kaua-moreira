@@ -10,15 +10,15 @@ export const siteConfig = {
   email: "kauacirinom@icloud.com",
 
   social: {
-    github: "",
+    github: "https://github.com/kauamoreira-dev",
     linkedin: "https://www.linkedin.com/in/kauamoreira-dev/",
     instagram: "https://instagram.com/kaua.mcirino",
   },
 
   whatsapp: "https://wa.me/5569984299960",
 
-  // Currículo — páginas estáticas otimizadas para impressão em PDF.
-  resume: { pt: "/curriculo.html", en: "/resume.html" },
+  // Currículo oficial em PDF (PT). Quando existir a versão em inglês, troque a URL "en".
+  resume: { pt: "/curriculo.pdf", en: "/curriculo.pdf" },
 };
 
 export const projetoDestaque = {

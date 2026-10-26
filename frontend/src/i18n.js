@@ -47,11 +47,16 @@ export const dict = {
         contextoTitulo: "Contexto",
         contexto:
           "A Vagas Tapajós é uma plataforma web criada para conectar candidatos e empresas da região do Tapajós, centralizando a divulgação e a busca por oportunidades em um só lugar.",
-        desafioTitulo: "O desafio",
-        desafio:
-          "Criar uma experiência simples para dois públicos — quem busca uma vaga e quem quer contratar — mantendo a plataforma rápida, organizada e fácil de usar no computador e no celular.",
-        buildTitulo: "O que foi construído",
-        stackTitulo: "Stack & decisões",
+        problemaTitulo: "O problema",
+        problema:
+          "Facilitar a conexão entre quem busca uma vaga e quem quer contratar na região, reunindo a divulgação e a busca por oportunidades em um só lugar, no computador e no celular.",
+        solucaoTitulo: "A solução",
+        solucao:
+          "Uma plataforma web com autenticação e perfis para candidatos e empresas, publicação de vagas, candidaturas e dados integrados via Supabase — com interface responsiva e boa experiência mobile.",
+        participacaoTitulo: "Minha participação",
+        participacao:
+          "Atuei no desenvolvimento front-end completo: interface em React, componentes reutilizáveis, integração com Supabase (autenticação e banco de dados) e adaptação responsiva para web e mobile.",
+        stackTitulo: "Decisões técnicas & tecnologias",
         stack: [
           "React + Vite — base para interfaces rápidas e um projeto bem modularizado",
           "JavaScript / TypeScript — produtividade com mais segurança nas mudanças de código",
@@ -153,11 +158,16 @@ export const dict = {
         contextoTitulo: "Context",
         contexto:
           "Vagas Tapajós is a web platform created to connect candidates and companies in the Tapajós region, bringing job posting and job search together in one place.",
-        desafioTitulo: "The challenge",
-        desafio:
-          "Designing a simple experience for two audiences — people looking for a job and companies hiring — while keeping the platform fast, organized and easy to use on desktop and mobile.",
-        buildTitulo: "What was built",
-        stackTitulo: "Stack & decisions",
+        problemaTitulo: "The problem",
+        problema:
+          "Making it easier for job seekers and employers in the region to find each other, with job posting and job search gathered in one place, on desktop and mobile.",
+        solucaoTitulo: "The solution",
+        solucao:
+          "A web platform with authentication and profiles for candidates and companies, job posting, applications and data integrated through Supabase — with a responsive interface and a solid mobile experience.",
+        participacaoTitulo: "My role",
+        participacao:
+          "I handled the complete front-end development: React interface, reusable components, Supabase integration (authentication and database) and responsive adaptation for web and mobile.",
+        stackTitulo: "Technical decisions & technologies",
         stack: [
           "React + Vite — a foundation for fast interfaces and a well-structured project",
           "JavaScript / TypeScript — productivity with safer code changes",

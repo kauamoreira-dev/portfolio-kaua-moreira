@@ -113,6 +113,7 @@ export const Hero = () => {
               href={siteConfig.resume[lang]}
               target="_blank"
               rel="noreferrer"
+              download
               data-testid="hero-cta-resume"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
