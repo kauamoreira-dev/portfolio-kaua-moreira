@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Instagram, Mail, MessageCircle } from "lucide-react";
+import { Github, Instagram, Mail, MessageCircle } from "lucide-react";
 import { Reveal, SectionTag } from "@/components/Reveal";
 import { siteConfig } from "@/config/site";
 import { useLang } from "@/i18n";
@@ -48,14 +48,16 @@ export const Contact = () => {
 
         <Reveal delay={0.3}>
           <motion.a
-            href={siteConfig.email ? `mailto:${siteConfig.email}` : "#"}
+            href={siteConfig.whatsapp}
+            target="_blank"
+            rel="noreferrer"
             data-testid="contact-cta"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             className="mt-12 inline-flex items-center gap-3 rounded-full bg-accent px-9 py-4 text-base font-semibold text-white transition-[background-color,box-shadow] duration-300 hover:bg-accent-light hover:shadow-[0_0_50px_rgba(37,99,235,0.5)]"
           >
             {t.contato.cta}
-            <ArrowUpRight size={18} />
+            <MessageCircle size={18} />
           </motion.a>
         </Reveal>
 

@@ -53,3 +53,4 @@ Criar um portfólio pessoal premium, moderno e altamente profissional para o des
 - 2026-10-09 (f): PRÉ-DEPLOY — GitHub oficial (github.com/kauamoreira-dev) em todos os botões; currículo oficial /curriculo.pdf (PT) no botão de ambas as línguas (EN à espera de PDF próprio); case study reestruturado (contexto, problema, solução, minha participação, funcionalidades, decisões técnicas & tecnologias, galeria); sitemap só com "/"
 
 - 2026-10-09 (g): Instagram corrigido para @kauamoreira.dev (site, JSON-LD, currículos PT/EN); bug do scroll no modal Case Study corrigido (Lenis capturava a roda — adicionado data-lenis-prevent; verificado com teste automatizado: scrollTop 0→1744 com fundo parado)
+- 2026-10-09 (h): CTA "Vamos trabalhar juntos" agora abre o WhatsApp (wa.me/5569984299960, nova aba, ícone WhatsApp); currículo oficial atualizado (nova versão do PDF enviada pelo Kauã, 1 página)
